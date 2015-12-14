@@ -1,0 +1,17 @@
+rootProject.name = 'liferay-workspace'
+
+FileTree fileTree = fileTree(rootDir) {
+	include "**/bnd.bnd"
+	include "**/liferay-theme.json"
+}
+
+URI rootURI = rootDir.toURI()
+
+fileTree.each {
+	File buildGradleFile ->
+
+		String moduleDirName = rootURI.relativize(buildGradleFile.getParentFile().toURI())
+
+		include ":" + moduleDirName.replaceAll("[\\/]", ":")
+}
+
