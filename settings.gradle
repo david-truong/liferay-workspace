@@ -1,6 +1,6 @@
 FileTree fileTree = fileTree(rootDir) {
-	include "**/bnd.bnd"
-	include "**/liferay-theme.json"
+	include "modules/**/bnd.bnd"
+	include "themes/**/liferay-theme.json"
 }
 
 URI rootURI = rootDir.toURI()

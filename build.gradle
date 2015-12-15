@@ -12,6 +12,6 @@ buildscript {
 	}
 }
 
-subprojects {
+configure(subprojects.findAll {it.path.startsWith ":modules:"}) {
 	apply plugin: "com.liferay.plugin"
 }
