@@ -1,9 +1,0 @@
-{
-  "LiferayTheme": {
-    "appServerPath": "/Users/dtruong/Projects/liferay/bundles/tomcat-7.0.62",
-    "deployPath": "/Users/dtruong/Projects/liferay/bundles/deploy",
-    "appServerPathTheme": "/Users/dtruong/Projects/liferay/bundles/tomcat-7.0.62/webapps/new-theme",
-    "deployed": true,
-    "themeName": "new-theme"
-  }
-}
