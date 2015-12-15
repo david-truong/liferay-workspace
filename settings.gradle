@@ -1,5 +1,3 @@
-rootProject.name = 'liferay-workspace'
-
 FileTree fileTree = fileTree(rootDir) {
 	include "**/bnd.bnd"
 	include "**/liferay-theme.json"
