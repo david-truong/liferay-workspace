@@ -1,6 +1,9 @@
+import com.liferay.gradle.plugins.gulp.ExecuteGulpTask
+
 buildscript {
 	dependencies {
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "1.0.47+"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.gulp", version: "1.0.0+"
 	}
 
 	repositories {
@@ -14,4 +17,14 @@ buildscript {
 
 configure(subprojects.findAll {it.path.startsWith ":modules:"}) {
 	apply plugin: "com.liferay.plugin"
+}
+
+configure(subprojects.findAll {it.path.startsWith ":themes:"}) {
+	apply plugin: "com.liferay.gulp"
+
+	buildDir = file("build_gradle")
+
+	tasks.withType(ExecuteGulpTask) {
+		dependsOn npmInstall
+	}
 }
