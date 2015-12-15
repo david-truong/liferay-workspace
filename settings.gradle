@@ -8,10 +8,9 @@ FileTree fileTree = fileTree(rootDir) {
 URI rootURI = rootDir.toURI()
 
 fileTree.each {
-	File buildGradleFile ->
+	File file ->
 
-		String moduleDirName = rootURI.relativize(buildGradleFile.getParentFile().toURI())
+	String dirName = rootURI.relativize(file.parentFile.toURI())
 
-		include ":" + moduleDirName.replaceAll("[\\/]", ":")
+	include ":" + dirName.replaceAll("[\\/]", ":")
 }
-
