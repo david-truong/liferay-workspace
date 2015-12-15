@@ -1,6 +1,6 @@
 FileTree fileTree = fileTree(rootDir) {
 	include "modules/**/bnd.bnd"
-	include "themes/**/liferay-theme.json"
+	include "themes/**/gulpfile.js"
 }
 
 URI rootURI = rootDir.toURI()
