@@ -1,3 +1,5 @@
 **/*.iml
 .idea
 **/build
+**/build_gradle
+.gradle

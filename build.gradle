@@ -1,4 +1,12 @@
 import com.liferay.gradle.plugins.gulp.ExecuteGulpTask
+import com.liferay.gradle.util.FileUtil
+import groovy.json.JsonBuilder
+
+ext {
+	liferayHome="${project.rootDir}/../bundles"
+	appServerDir="${liferayHome}/tomcat-7.0.62"
+	deployDir="${liferayHome}/deploy"
+}
 
 buildscript {
 	dependencies {
@@ -15,16 +23,47 @@ buildscript {
 	}
 }
 
-configure(subprojects.findAll {it.path.startsWith ":modules:"}) {
+configure(subprojects.findAll {FileUtil.exists(it, "bnd.bnd")}) {
+	repositories {
+		maven {
+			url "http://cdn.repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+
 	apply plugin: "com.liferay.plugin"
 }
 
-configure(subprojects.findAll {it.path.startsWith ":themes:"}) {
+configure(subprojects.findAll {FileUtil.exists(it, "gulpfile.js")}) {
 	apply plugin: "com.liferay.gulp"
 
 	buildDir = file("build_gradle")
 
 	tasks.withType(ExecuteGulpTask) {
 		dependsOn npmInstall
+		dependsOn createLiferayThemeJson
 	}
+
+	task createLiferayThemeJson {
+		File liferayThemeJsonFile = file("liferay-theme.json")
+
+		doLast {
+			JsonBuilder jsonBuilder = new JsonBuilder()
+
+			jsonBuilder.LiferayTheme {
+				appServerPath appServerDir
+				appServerPathTheme "${appServerDir}/webapps/${project.name}"
+				deployed true
+				deployPath deployDir
+				themeName project.name
+			}
+
+			liferayThemeJsonFile.text = jsonBuilder
+		}
+
+		onlyIf {
+			!liferayThemeJsonFile.exists()
+		}
+	}
+
+	task deploy(dependsOn: 'gulpDeploy')
 }
