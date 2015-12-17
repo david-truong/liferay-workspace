@@ -13,3 +13,9 @@ fileTree.each {
 
 	include ":" + dirName.replaceAll("[\\/]", ":")
 }
+
+File pluginsSdk = file("plugins-sdk")
+
+if (pluginsSdk.exists()) {
+	include ':plugins-sdk'
+}

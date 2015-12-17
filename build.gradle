@@ -69,3 +69,16 @@ configure(subprojects.findAll {FileUtil.exists(it, "gulpfile.js")}) {
 
 	task deploy(dependsOn: 'gulpDeploy')
 }
+
+File pluginsSdk = file("plugins-sdk")
+
+if (pluginsSdk.exists()) {
+	configure(project(':plugins-sdk')) {
+		ant.importBuild 'build.xml'
+
+		task build(type: Copy, dependsOn: 'war') << {
+			from 'dist'
+			into "build/distributions"
+		}
+	}
+}
