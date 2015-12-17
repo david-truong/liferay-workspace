@@ -5,3 +5,7 @@
 .gradle
 **/classes
 **/lib
+**/.classpath
+**/.project
+**/.settings
+**/bin
