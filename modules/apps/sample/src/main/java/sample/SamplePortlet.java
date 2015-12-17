@@ -1,4 +1,4 @@
-package helloworld;
+package sample;
 
 import javax.portlet.Portlet;
 
@@ -18,6 +18,6 @@ import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 	},
 	service = Portlet.class
 )
-public class HelloWorldPortlet extends MVCPortlet {
+public class SamplePortlet extends MVCPortlet {
 
 }
