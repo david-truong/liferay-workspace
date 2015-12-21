@@ -24,6 +24,20 @@ buildscript {
 	}
 }
 
+configurations {
+	bundle
+}
+
+dependencies {
+	bundle group: "com.liferay", name: "portal-tomcat-bundle", version: "7.0-ce-a5-20151209121227541"
+}
+
+repositories {
+	maven {
+		url "http://106.187.96.36/gamerson/liferay-workspace-repo/"
+	}
+}
+
 configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir, gradle.modulesDir)}) {
 	repositories {
 		maven {
