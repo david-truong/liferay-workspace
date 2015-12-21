@@ -35,13 +35,22 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 }
 
 configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir, gradle.themesDir)}) {
+	apply plugin: "base"
 	apply plugin: "com.liferay.gulp"
 
-	task build(dependsOn: "gulpBuild")
 	task createLiferayThemeJson
 	task deploy(dependsOn: "gulpDeploy")
 
 	buildDir = file("build_gradle")
+
+	assemble {
+		dependsOn "gulpBuild"
+	}
+
+	clean {
+		delete "build", "dist"
+		dependsOn cleanNpmInstall
+	}
 
 	createLiferayThemeJson {
 		File liferayThemeJsonFile = file("liferay-theme.json")
