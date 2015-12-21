@@ -1,7 +1,8 @@
 FileTree fileTree = fileTree(rootDir) {
+	exclude "themes/**/node_modules/"
+
 	include "modules/**/bnd.bnd"
 	include "themes/**/gulpfile.js"
-	exclude "themes/**/node_modules/**"
 }
 
 URI rootURI = rootDir.toURI()

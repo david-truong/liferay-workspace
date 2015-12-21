@@ -1,11 +1,12 @@
 import com.liferay.gradle.plugins.gulp.ExecuteGulpTask
 import com.liferay.gradle.util.FileUtil
+
 import groovy.json.JsonBuilder
 
 ext {
-	liferayHome="${project.rootDir}/../bundles"
-	appServerDir="${liferayHome}/tomcat-7.0.62"
-	deployDir="${liferayHome}/deploy"
+	liferayHome = "${project.rootDir}/../bundles"
+	appServerDir = "${liferayHome}/tomcat-7.0.62"
+	deployDir = "${liferayHome}/deploy"
 }
 
 buildscript {
@@ -43,7 +44,7 @@ configure(subprojects.findAll {FileUtil.exists(it, "gulpfile.js")}) {
 		dependsOn createLiferayThemeJson
 	}
 
-	task build(dependsOn: 'gulpBuild')
+	task build(dependsOn: "gulpBuild")
 
 	task createLiferayThemeJson {
 		File liferayThemeJsonFile = file("liferay-theme.json")
@@ -67,17 +68,17 @@ configure(subprojects.findAll {FileUtil.exists(it, "gulpfile.js")}) {
 		}
 	}
 
-	task deploy(dependsOn: 'gulpDeploy')
+	task deploy(dependsOn: "gulpDeploy")
 }
 
 File pluginsSdk = file("plugins-sdk")
 
 if (pluginsSdk.exists()) {
-	configure(project(':plugins-sdk')) {
-		ant.importBuild 'build.xml'
+	configure(pluginsSDKProject) {
+		ant.importBuild "build.xml"
 
-		task build(type: Copy, dependsOn: 'war') << {
-			from 'dist'
+		task build(type: Copy, dependsOn: "war") << {
+			from "dist"
 			into "build/distributions"
 		}
 	}

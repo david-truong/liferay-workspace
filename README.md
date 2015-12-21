@@ -20,4 +20,4 @@ Themes checked in this directory will automatically be built by gradle.  It will
 
 #### Plugins SDK (Optional)
 
-If you have an old Liferay project that used the Plugins SDK, you can include it in this project.  This will allow the project to participate in the full build lifecycle.  Gradle will call 'ant all' during a build. 
+If you have an old Liferay project that used the Plugins SDK, you can include it in this project.  This will allow the project to participate in the full build lifecycle.  Gradle will call `ant all` during a build.
