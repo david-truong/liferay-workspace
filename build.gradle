@@ -24,7 +24,7 @@ buildscript {
 	}
 }
 
-configure(subprojects.findAll {FileUtil.exists(it, "bnd.bnd")}) {
+configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir, gradle.modulesDir)}) {
 	repositories {
 		maven {
 			url "http://cdn.repository.liferay.com/nexus/content/groups/public"
@@ -34,7 +34,7 @@ configure(subprojects.findAll {FileUtil.exists(it, "bnd.bnd")}) {
 	apply plugin: "com.liferay.plugin"
 }
 
-configure(subprojects.findAll {FileUtil.exists(it, "gulpfile.js")}) {
+configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir, gradle.themesDir)}) {
 	apply plugin: "com.liferay.gulp"
 
 	buildDir = file("build_gradle")
@@ -71,9 +71,9 @@ configure(subprojects.findAll {FileUtil.exists(it, "gulpfile.js")}) {
 	task deploy(dependsOn: "gulpDeploy")
 }
 
-File pluginsSdk = file("plugins-sdk")
+Project pluginsSDKProject = findProject(":plugins-sdk")
 
-if (pluginsSdk.exists()) {
+if (pluginsSDKProject) {
 	configure(pluginsSDKProject) {
 		ant.importBuild "build.xml"
 
