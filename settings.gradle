@@ -20,7 +20,7 @@ fileTree.each {
 if (gradle.pluginsSDKDir.exists()) {
 	include ":plugins-sdk"
 
-	Project pluginsSDKProject = project(":plugins-sdk")
+	ProjectDescriptor pluginsSDKProject = project(":plugins-sdk")
 
-	pluginsSDKProject.projectDir = pluginsSDKDir
+	pluginsSDKProject.projectDir = gradle.pluginsSDKDir
 }
