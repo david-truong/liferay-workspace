@@ -37,16 +37,13 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir, gradle.themesDir)}) {
 	apply plugin: "com.liferay.gulp"
 
+	task build(dependsOn: "gulpBuild")
+	task createLiferayThemeJson
+	task deploy(dependsOn: "gulpDeploy")
+
 	buildDir = file("build_gradle")
 
-	tasks.withType(ExecuteGulpTask) {
-		dependsOn npmInstall
-		dependsOn createLiferayThemeJson
-	}
-
-	task build(dependsOn: "gulpBuild")
-
-	task createLiferayThemeJson {
+	createLiferayThemeJson {
 		File liferayThemeJsonFile = file("liferay-theme.json")
 
 		doLast {
@@ -68,7 +65,9 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 		}
 	}
 
-	task deploy(dependsOn: "gulpDeploy")
+	tasks.withType(ExecuteGulpTask) {
+		dependsOn createLiferayThemeJson, npmInstall
+	}
 }
 
 Project pluginsSDKProject = findProject(":plugins-sdk")
