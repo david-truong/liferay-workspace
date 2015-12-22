@@ -99,7 +99,9 @@ if (pluginsSDKProject) {
 	configure(pluginsSDKProject) {
 		ant.importBuild "build.xml"
 
-		task build(type: Copy, dependsOn: "war") << {
+		task build(type: Copy, dependsOn: "war")
+
+		build {
 			from "dist"
 			into "build/distributions"
 		}
