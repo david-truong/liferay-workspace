@@ -46,6 +46,10 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 	}
 
 	apply plugin: "com.liferay.plugin"
+
+	liferay {
+		appServerParentDir = gradle.appServerParentDir
+	}
 }
 
 configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir, gradle.themesDir)}) {
