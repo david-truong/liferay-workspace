@@ -1,11 +1,11 @@
 **/*.iml
-.idea
-**/build
-**/build_gradle
-.gradle
-**/classes
-**/lib
 **/.classpath
 **/.project
 **/.settings
 **/bin
+**/build
+**/build_gradle
+**/classes
+**/lib
+.gradle
+.idea

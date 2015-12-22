@@ -1,11 +1,12 @@
 import com.liferay.gradle.plugins.gulp.ExecuteGulpTask
 import com.liferay.gradle.util.FileUtil
+
 import groovy.json.JsonBuilder
 
 ext {
-	liferayHome="${project.rootDir}/../bundles"
-	appServerDir="${liferayHome}/tomcat-7.0.62"
-	deployDir="${liferayHome}/deploy"
+	liferayHome = "${project.rootDir}/../bundles"
+	appServerDir = "${liferayHome}/tomcat-7.0.62"
+	deployDir = "${liferayHome}/deploy"
 }
 
 buildscript {
@@ -23,7 +24,7 @@ buildscript {
 	}
 }
 
-configure(subprojects.findAll {FileUtil.exists(it, "bnd.bnd")}) {
+configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir, gradle.modulesDir)}) {
 	repositories {
 		maven {
 			url "http://cdn.repository.liferay.com/nexus/content/groups/public"
@@ -33,19 +34,25 @@ configure(subprojects.findAll {FileUtil.exists(it, "bnd.bnd")}) {
 	apply plugin: "com.liferay.plugin"
 }
 
-configure(subprojects.findAll {FileUtil.exists(it, "gulpfile.js")}) {
+configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir, gradle.themesDir)}) {
+	apply plugin: "base"
 	apply plugin: "com.liferay.gulp"
+
+	task createLiferayThemeJson
+	task deploy(dependsOn: "gulpDeploy")
 
 	buildDir = file("build_gradle")
 
-	tasks.withType(ExecuteGulpTask) {
-		dependsOn npmInstall
-		dependsOn createLiferayThemeJson
+	assemble {
+		dependsOn "gulpBuild"
 	}
 
-	task build(dependsOn: 'gulpBuild')
+	clean {
+		delete "build", "dist"
+		dependsOn cleanNpmInstall
+	}
 
-	task createLiferayThemeJson {
+	createLiferayThemeJson {
 		File liferayThemeJsonFile = file("liferay-theme.json")
 
 		doLast {
@@ -67,17 +74,19 @@ configure(subprojects.findAll {FileUtil.exists(it, "gulpfile.js")}) {
 		}
 	}
 
-	task deploy(dependsOn: 'gulpDeploy')
+	tasks.withType(ExecuteGulpTask) {
+		dependsOn createLiferayThemeJson, npmInstall
+	}
 }
 
-File pluginsSdk = file("plugins-sdk")
+Project pluginsSDKProject = findProject(":plugins-sdk")
 
-if (pluginsSdk.exists()) {
-	configure(project(':plugins-sdk')) {
-		ant.importBuild 'build.xml'
+if (pluginsSDKProject) {
+	configure(pluginsSDKProject) {
+		ant.importBuild "build.xml"
 
-		task build(type: Copy, dependsOn: 'war') << {
-			from 'dist'
+		task build(type: Copy, dependsOn: "war") << {
+			from "dist"
 			into "build/distributions"
 		}
 	}

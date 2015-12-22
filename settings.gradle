@@ -1,8 +1,11 @@
-FileTree fileTree = fileTree(rootDir) {
-	include "modules/**/bnd.bnd"
-	include "themes/**/gulpfile.js"
-	exclude "themes/**/node_modules/**"
-}
+gradle.ext.modulesDir = file(properties["modules.dir"])
+gradle.ext.themesDir = file(properties["themes.dir"])
+gradle.ext.pluginsSDKDir = file(properties["plugins.sdk.dir"])
+
+FileTree modulesFileTree = fileTree(dir: gradle.modulesDir, include: "**/bnd.bnd")
+FileTree themesFileTree = fileTree(dir: gradle.themesDir, excludes: ["**/build/", "**/build_gradle/", "**/node_modules/"], include: "**/package.json")
+
+FileTree fileTree = modulesFileTree + themesFileTree
 
 URI rootURI = rootDir.toURI()
 
@@ -14,8 +17,10 @@ fileTree.each {
 	include ":" + dirName.replaceAll("[\\/]", ":")
 }
 
-File pluginsSdk = file("plugins-sdk")
+if (gradle.pluginsSDKDir.exists()) {
+	include ":plugins-sdk"
 
-if (pluginsSdk.exists()) {
-	include ':plugins-sdk'
+	ProjectDescriptor pluginsSDKProject = project(":plugins-sdk")
+
+	pluginsSDKProject.projectDir = gradle.pluginsSDKDir
 }
