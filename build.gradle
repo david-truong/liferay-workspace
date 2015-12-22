@@ -3,12 +3,6 @@ import com.liferay.gradle.util.FileUtil
 
 import groovy.json.JsonBuilder
 
-ext {
-	liferayHome = "${project.rootDir}/../bundles"
-	appServerDir = "${liferayHome}/tomcat-7.0.62"
-	deployDir = "${liferayHome}/deploy"
-}
-
 buildscript {
 	dependencies {
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "1.0.47+"
@@ -76,11 +70,15 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 		doLast {
 			JsonBuilder jsonBuilder = new JsonBuilder()
 
+			File appServerDir = new File(gradle.appServerParentDir, "tomcat-7.0.62")
+			File appServerThemeDir = new File(appServerDir, "webapps/" + project.name)
+			File deployDir = new File(gradle.appServerParentDir, "deploy")
+
 			jsonBuilder.LiferayTheme {
-				appServerPath appServerDir
-				appServerPathTheme "${appServerDir}/webapps/${project.name}"
-				deployed true
-				deployPath deployDir
+				appServerPath appServerDir.absolutePath
+				appServerPathTheme appServerThemeDir.absolutePath
+				deployed false
+				deployPath deployDir.absolutePath
 				themeName project.name
 			}
 
