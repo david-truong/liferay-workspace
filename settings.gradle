@@ -1,3 +1,5 @@
+gradle.ext.appServerParentDir = file(properties["app.server.parent.dir"])
+
 gradle.ext.modulesDir = file(properties["modules.dir"])
 gradle.ext.themesDir = file(properties["themes.dir"])
 gradle.ext.pluginsSDKDir = file(properties["plugins.sdk.dir"])
