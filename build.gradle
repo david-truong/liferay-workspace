@@ -120,10 +120,25 @@ if (pluginsSDKProject) {
 		ant.importBuild "build.xml"
 
 		task build(type: Copy, dependsOn: "war")
+		task updateSDKProperties
 
 		build {
 			from "dist"
 			into "build/distributions"
+		}
+
+		updateSDKProperties << {
+			String hostName = InetAddress.localHost.hostName
+
+			File buildPropertiesFile = file("build.${hostName}.properties")
+
+			Properties buildProperties = FileUtil.readProperties(buildPropertiesFile)
+
+			buildProperties["app.server.parent.dir"] = FileUtil.getAbsolutePath(gradle.appServerParentDir)
+
+			buildPropertiesFile.withWriter {
+				buildProperties.store it, null
+			}
 		}
 	}
 }
