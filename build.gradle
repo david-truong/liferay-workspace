@@ -39,6 +39,8 @@ distBundle {
 	} {
 		eachFile new StripPathSegmentsAction(1)
 	}
+
+	includeEmptyDirs = false
 }
 
 initBundle {
