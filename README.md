@@ -4,9 +4,26 @@ A highly opinionated way of structure your next Liferay 7.0 project.
 
 #### Requirements
 
-Install blade: https://github.com/gamerson/liferay-blade-tools
+Install the [blade CLI](https://github.com/gamerson/liferay-blade-tools) using the following command:
 
+```
+curl https://raw.githubusercontent.com/gamerson/liferay-blade-tools/master/installers/global | sudo sh
+```
+
+#### Init the workspace
+
+In an empty directory init the Liferay 7 workspace:
+
+```
 blade init
+```
+
+#### Convert a plugin-sdk directory into a Liferay 7 workspace:
+
+```
+cd liferay-plugins-sdk
+blade init
+```
 
 #### Modules
 
