@@ -19,6 +19,7 @@ buildscript {
 	}
 }
 
+task distBundle(type: Zip)
 task initBundle(type: Copy)
 
 configurations {
@@ -27,6 +28,17 @@ configurations {
 
 dependencies {
 	bundle group: "com.liferay", name: "portal-tomcat-bundle", version: "7.0-ce-a5-20151209121227541"
+}
+
+distBundle {
+	archiveName = "bundle.zip"
+	destinationDir = buildDir
+
+	from {
+		zipTree(configurations.bundle.singleFile)
+	} {
+		eachFile new StripPathSegmentsAction(1)
+	}
 }
 
 initBundle {
@@ -58,6 +70,12 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 	}
 
 	apply plugin: "com.liferay.plugin"
+
+	distBundle {
+		into("deploy") {
+			from jar
+		}
+	}
 
 	liferay {
 		appServerParentDir = gradle.appServerParentDir
@@ -108,6 +126,15 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 		}
 	}
 
+	distBundle {
+		into("deploy") {
+			from fileTree("dist") {
+				builtBy "gulpBuild"
+				include "*.war"
+			}
+		}
+	}
+
 	tasks.withType(ExecuteGulpTask) {
 		dependsOn createLiferayThemeJson, npmInstall
 	}
@@ -119,12 +146,15 @@ if (pluginsSDKProject) {
 	configure(pluginsSDKProject) {
 		ant.importBuild "build.xml"
 
-		task build(type: Copy, dependsOn: "war")
 		task updateSDKProperties
 
-		build {
-			from "dist"
-			into "build/distributions"
+		distBundle {
+			into("deploy") {
+				from fileTree("dist") {
+					builtBy "war"
+					include "*.war"
+				}
+			}
 		}
 
 		updateSDKProperties << {
