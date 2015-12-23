@@ -148,7 +148,15 @@ if (pluginsSDKProject) {
 	configure(pluginsSDKProject) {
 		ant.importBuild "build.xml"
 
+		task build
 		task updateSDKProperties
+
+		build {
+			dependsOn rootProject.initBundle
+			dependsOn war
+			
+			war.mustRunAfter(rootProject.initBundle)
+		}
 
 		distBundle {
 			into("deploy") {
