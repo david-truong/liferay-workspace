@@ -1,4 +1,3 @@
-<%
 /**
  * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
@@ -12,10 +11,29 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-%>
 
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+package com.liferay.resourcesimporter.util;
 
-<portlet:defineObjects />
+import com.liferay.portal.kernel.exception.PortalException;
 
-This is the <b>@portlet.display.name@</b> portlet.
+/**
+ * @author Brian Wing Shun Chan
+ */
+public class ImporterException extends PortalException {
+
+	public ImporterException() {
+	}
+
+	public ImporterException(String msg) {
+		super(msg);
+	}
+
+	public ImporterException(String msg, Throwable cause) {
+		super(msg, cause);
+	}
+
+	public ImporterException(Throwable cause) {
+		super(cause);
+	}
+
+}
