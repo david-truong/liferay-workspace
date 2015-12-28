@@ -6,7 +6,7 @@
 **/build
 **/build_gradle
 **/classes
-**/lib
+modules/**/lib
 .gradle
 .idea
 bundles
