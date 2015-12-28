@@ -27,7 +27,7 @@ configurations {
 }
 
 dependencies {
-	bundle group: "com.liferay", name: "portal-tomcat-bundle", version: "7.0-ce-a5-20151209121227541"
+	bundle group: "com.liferay", name: "portal-tomcat-bundle", version: "7.0-ce-b1-20151223111037302"
 }
 
 distBundle {
@@ -139,6 +139,8 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 
 	tasks.withType(ExecuteGulpTask) {
 		dependsOn createLiferayThemeJson, npmInstall
+
+		args "--"
 	}
 }
 
@@ -154,7 +156,7 @@ if (pluginsSDKProject) {
 		build {
 			dependsOn rootProject.initBundle
 			dependsOn war
-			
+
 			war.mustRunAfter(rootProject.initBundle)
 		}
 
