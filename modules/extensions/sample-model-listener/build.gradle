@@ -1,6 +1,0 @@
-dependencies {
-	compile 'org.osgi:org.osgi.compendium:5.0.0'
-	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
-}
-
-version = '1.0.0'
