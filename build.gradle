@@ -60,7 +60,7 @@ initBundle {
 
 repositories {
 	maven {
-		url "http://106.187.96.36/gamerson/liferay-workspace-repo/"
+		url "https://liferay-test-01.ci.cloudbees.com/job/liferay-bundle-publishing/lastSuccessfulBuild/artifact/build/m2_repo/"
 	}
 }
 
