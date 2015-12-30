@@ -7,12 +7,11 @@
 **/bin
 **/build
 **/build_gradle
-**/classes
 **/tmp
 .gradle
 .idea
 bundles
-modules/**/lib
+plugins-sdk/**/classes
 plugins-sdk/**/ivy.xml.MD5
 plugins-sdk/**/liferay-hook.xml.processed
 plugins-sdk/dependencies/**/*.jar

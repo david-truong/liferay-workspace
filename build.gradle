@@ -6,7 +6,7 @@ import groovy.json.JsonBuilder
 
 buildscript {
 	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "1.0.47+"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins", version: "1.0.56+"
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.gulp", version: "1.0.0+"
 	}
 
