@@ -55,11 +55,11 @@ initBundle {
 	}
 
 	from ("${rootDir}/configs/common")
-	from ("${rootDir}/configs/${project.properties["liferay.environment"]}")
+	from ("${rootDir}/configs/${project.properties["liferay.workspace.environment"]}")
 
 	includeEmptyDirs = false
 
-	into gradle.appServerParentDir
+	into gradle.homeDir
 }
 
 repositories {
@@ -84,7 +84,7 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 	}
 
 	liferay {
-		appServerParentDir = gradle.appServerParentDir
+		appServerParentDir = gradle.homeDir
 	}
 }
 
@@ -112,9 +112,9 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 		doLast {
 			JsonBuilder jsonBuilder = new JsonBuilder()
 
-			File appServerDir = new File(gradle.appServerParentDir, "tomcat-7.0.62")
+			File appServerDir = new File(gradle.homeDir, "tomcat-7.0.62")
 			File appServerThemeDir = new File(appServerDir, "webapps/" + project.name)
-			File deployDir = new File(gradle.appServerParentDir, "deploy")
+			File deployDir = new File(gradle.homeDir, "deploy")
 
 			jsonBuilder.LiferayTheme {
 				appServerPath appServerDir.absolutePath
@@ -180,7 +180,7 @@ if (pluginsSDKProject) {
 
 			Properties buildProperties = FileUtil.readProperties(buildPropertiesFile)
 
-			buildProperties["app.server.parent.dir"] = FileUtil.getAbsolutePath(gradle.appServerParentDir)
+			buildProperties["app.server.parent.dir"] = FileUtil.getAbsolutePath(gradle.homeDir)
 
 			buildPropertiesFile.withWriter {
 				buildProperties.store it, null
