@@ -1,8 +1,16 @@
+gradle.ext.bundleGroup = properties["liferay.workspace.bundle.group"]
+gradle.ext.bundleName = properties["liferay.workspace.bundle.name"]
+gradle.ext.bundleVersion = properties["liferay.workspace.bundle.version"]
+gradle.ext.bundleMavenUrl = properties["liferay.workspace.bundle.maven.url"]
+
+gradle.ext.environment = properties["liferay.workspace.environment"]
+
 gradle.ext.homeDir = file(properties["liferay.workspace.home.dir"])
 
 gradle.ext.modulesDir = file(properties["liferay.workspace.modules.dir"])
 gradle.ext.themesDir = file(properties["liferay.workspace.themes.dir"])
 gradle.ext.pluginsSDKDir = file(properties["liferay.workspace.plugins.sdk.dir"])
+
 
 FileTree modulesFileTree = fileTree(dir: gradle.modulesDir, include: "**/bnd.bnd")
 FileTree themesFileTree = fileTree(dir: gradle.themesDir, excludes: ["**/build/", "**/build_gradle/", "**/node_modules/"], include: "**/package.json")

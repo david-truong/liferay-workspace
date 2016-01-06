@@ -27,7 +27,7 @@ configurations {
 }
 
 dependencies {
-	bundle group: "com.liferay", name: "portal-tomcat-bundle", version: "7.0-ce-b1-20151223111037302"
+	bundle group: gradle.bundleGroup, name: gradle.bundleName, version: gradle.bundleVersion
 }
 
 distBundle {
@@ -55,7 +55,7 @@ initBundle {
 	}
 
 	from ("${rootDir}/configs/common")
-	from ("${rootDir}/configs/${project.properties["liferay.workspace.environment"]}")
+	from ("${rootDir}/configs/${gradle.environment}")
 
 	includeEmptyDirs = false
 
@@ -64,7 +64,7 @@ initBundle {
 
 repositories {
 	maven {
-		url "https://liferay-test-01.ci.cloudbees.com/job/liferay-bundle-publishing/lastSuccessfulBuild/artifact/build/m2_repo/"
+		url gradle.bundleMavenUrl
 	}
 }
 
@@ -143,8 +143,6 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 
 	tasks.withType(ExecuteGulpTask) {
 		dependsOn createLiferayThemeJson, npmInstall
-
-		args "--"
 	}
 }
 
