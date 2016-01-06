@@ -158,10 +158,7 @@ if (pluginsSDKProject) {
 		task updateSDKProperties
 
 		build {
-			dependsOn rootProject.initBundle
 			dependsOn war
-
-			war.mustRunAfter(rootProject.initBundle)
 		}
 
 		distBundle {
@@ -184,6 +181,12 @@ if (pluginsSDKProject) {
 
 			buildPropertiesFile.withWriter {
 				buildProperties.store it, null
+			}
+		}
+
+		war {
+			if (!gradle.homeDir.exists()) {
+				dependsOn rootProject.initBundle
 			}
 		}
 	}
