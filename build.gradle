@@ -77,6 +77,11 @@ configure(subprojects.findAll {!it.subprojects && FileUtil.isChild(it.projectDir
 
 	apply plugin: "com.liferay.plugin"
 
+	buildLang {
+		translateClientId = "microsoft.translator.client.id"
+		translateClientSecret = "microsoft.translator.client.secret"
+	}
+
 	distBundle {
 		into("deploy") {
 			from jar
