@@ -2,7 +2,7 @@ package sample.model.listener;
 
 import org.osgi.service.component.annotations.Component;
 
-import com.liferay.portal.ModelListenerException;
+import com.liferay.portal.exception.ModelListenerException;
 import com.liferay.portal.model.BaseModelListener;
 import com.liferay.portal.model.Layout;
 import com.liferay.portal.model.ModelListener;
