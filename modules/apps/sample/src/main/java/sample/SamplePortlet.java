@@ -6,6 +6,9 @@ import org.osgi.service.component.annotations.Component;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 
+/**
+ * @author David Truong
+ */
 @Component(
 	immediate = true,
 	property = {
