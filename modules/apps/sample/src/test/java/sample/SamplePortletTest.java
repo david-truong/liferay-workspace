@@ -14,12 +14,12 @@ import org.junit.Test;
 public class SamplePortletTest {
 
 	@BeforeClass
-	public static void setUpBeforeClass() {
+	public static void setUpClass() {
 		System.out.println("Invoking setUpBeforeClass()");
 	}
 
 	@AfterClass
-	public static void tearDownAfterClass() {
+	public static void tearDownClass() {
 		System.out.println("Invoking tearDownAfterClass()");
 	}
 
