@@ -1,14 +1,4 @@
+Bundle-Name: sample
 Bundle-SymbolicName: sample
-
-Bundle-Version: ${version}.${tstamp}
-
-Import-Package: \
-	javax.portlet;version='[2.0,3)',\
-	javax.servlet;version='[2.5,4)',\
-	*
-
-Private-Package: \
-	sample
-
--includeresource:\
-	META-INF/resources=src/main/resources/META-INF/resources
+Bundle-Version: 1.0.0
+Private-Package: sample

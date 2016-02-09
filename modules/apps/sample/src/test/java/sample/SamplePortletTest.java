@@ -8,26 +8,29 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+/**
+ * @author David Truong
+ */
 public class SamplePortletTest {
+
+	@BeforeClass
+	public static void setUpClass() {
+		System.out.println("Invoking setUpBeforeClass()");
+	}
+
+	@AfterClass
+	public static void tearDownClass() {
+		System.out.println("Invoking tearDownAfterClass()");
+	}
 
 	@Before
 	public void setUp() {
 		System.out.println("Invoking setUp()");
 	}
 
-	@BeforeClass
-	public static void setUpBeforeClass() {
-		System.out.println("Invoking setUpBeforeClass()");
-	}
-
 	@After
 	public void tearDown() {
 		System.out.println("Invoking tearDown()");
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() {
-		System.out.println("Invoking tearDownAfterClass()");
 	}
 
 	@Ignore

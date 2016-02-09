@@ -1,9 +1,31 @@
+apply plugin: 'eclipse'
+
+configurations {
+	portalTest
+}
+
 dependencies {
 	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
 	compile 'javax.portlet:portlet-api:2.0'
 	compile 'org.osgi:org.osgi.compendium:5.0.0'
 
+	portalTest 'com.liferay.portal:portal-test-internal:7.0.0-SNAPSHOT'
+	portalTest 'com.liferay.portal:portal-test:7.0.0-SNAPSHOT'
+
 	testCompile 'junit:junit:4.4'
+
+	testIntegrationCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.1'
 }
 
-version = '1.0.0'
+eclipse {
+	classpath {
+		plusConfigurations += [configurations.portalTest]
+	}
+}
+
+sourceSets {
+	testIntegration {
+		compileClasspath = configurations.portal + compileClasspath + configurations.portalTest
+		runtimeClasspath = configurations.portal + runtimeClasspath + configurations.portalTest
+	}
+}
