@@ -6,4 +6,3 @@ dependencies {
 	testCompile 'junit:junit:4.4'
 }
 
-version = '1.0.0'
