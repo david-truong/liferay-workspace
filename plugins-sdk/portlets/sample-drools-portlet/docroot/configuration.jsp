@@ -43,7 +43,7 @@ long[] classNameIdValues = StringUtil.split(ParamUtil.getString(request, "classN
 
 		// Left list
 
-		MethodKey methodKey = new MethodKey(ClassResolverUtil.resolveByPortalClassLoader("com.liferay.portal.security.permission.ResourceActionsUtil"), "getModelResource", HttpServletRequest.class, String.class);
+		MethodKey methodKey = new MethodKey(ClassResolverUtil.resolveByPortalClassLoader("com.liferay.portal.kernel.security.permission.ResourceActionsUtil"), "getModelResource", HttpServletRequest.class, String.class);
 
 		List<KeyValuePair> leftList = new ArrayList<KeyValuePair>();
 
@@ -57,7 +57,7 @@ long[] classNameIdValues = StringUtil.split(ParamUtil.getString(request, "classN
 
 		List<KeyValuePair> rightList = new ArrayList<KeyValuePair>();
 
-		for (long classNameId : AssetRendererFactoryRegistryUtil.getClassNameIds()) {
+		for (long classNameId : AssetRendererFactoryRegistryUtil.getClassNameIds(company.getCompanyId())) {
 			if (!ArrayUtil.contains(classNameIdValues, classNameId)) {
 				String value = (String)PortalClassInvoker.invoke(false, methodKey, pageContext, PortalUtil.getClassName(classNameId));
 

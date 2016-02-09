@@ -1,3 +1,4 @@
+<%--
 /**
  * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
  *
@@ -11,29 +12,15 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
+--%>
 
-package com.liferay.samplelar;
+<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 
-import com.liferay.portal.kernel.exception.PortalException;
+<%@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
+taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
-/**
- * @author Mate Thurzo
- */
-public class SampleLARBookingBookingNumberException extends PortalException {
+<%@ page import="java.util.Calendar" %>
 
-	public SampleLARBookingBookingNumberException() {
-	}
+<portlet:defineObjects />
 
-	public SampleLARBookingBookingNumberException(String msg) {
-		super(msg);
-	}
-
-	public SampleLARBookingBookingNumberException(String msg, Throwable cause) {
-		super(msg, cause);
-	}
-
-	public SampleLARBookingBookingNumberException(Throwable cause) {
-		super(cause);
-	}
-
-}
+<liferay-theme:defineObjects />

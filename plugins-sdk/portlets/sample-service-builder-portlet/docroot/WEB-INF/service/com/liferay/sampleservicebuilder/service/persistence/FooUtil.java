@@ -18,9 +18,9 @@ import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.portal.kernel.bean.PortletBeanLocatorUtil;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.ReferenceRegistry;
-import com.liferay.portal.service.ServiceContext;
 
 import com.liferay.sampleservicebuilder.model.Foo;
 
@@ -47,35 +47,35 @@ public class FooUtil {
 	 */
 
 	/**
-	 * @see com.liferay.portal.service.persistence.BasePersistence#clearCache()
+	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#clearCache()
 	 */
 	public static void clearCache() {
 		getPersistence().clearCache();
 	}
 
 	/**
-	 * @see com.liferay.portal.service.persistence.BasePersistence#clearCache(com.liferay.portal.model.BaseModel)
+	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#clearCache(com.liferay.portal.kernel.model.BaseModel)
 	 */
 	public static void clearCache(Foo foo) {
 		getPersistence().clearCache(foo);
 	}
 
 	/**
-	 * @see com.liferay.portal.service.persistence.BasePersistence#countWithDynamicQuery(DynamicQuery)
+	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#countWithDynamicQuery(DynamicQuery)
 	 */
 	public static long countWithDynamicQuery(DynamicQuery dynamicQuery) {
 		return getPersistence().countWithDynamicQuery(dynamicQuery);
 	}
 
 	/**
-	 * @see com.liferay.portal.service.persistence.BasePersistence#findWithDynamicQuery(DynamicQuery)
+	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#findWithDynamicQuery(DynamicQuery)
 	 */
 	public static List<Foo> findWithDynamicQuery(DynamicQuery dynamicQuery) {
 		return getPersistence().findWithDynamicQuery(dynamicQuery);
 	}
 
 	/**
-	 * @see com.liferay.portal.service.persistence.BasePersistence#findWithDynamicQuery(DynamicQuery, int, int)
+	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#findWithDynamicQuery(DynamicQuery, int, int)
 	 */
 	public static List<Foo> findWithDynamicQuery(DynamicQuery dynamicQuery,
 		int start, int end) {
@@ -83,7 +83,7 @@ public class FooUtil {
 	}
 
 	/**
-	 * @see com.liferay.portal.service.persistence.BasePersistence#findWithDynamicQuery(DynamicQuery, int, int, OrderByComparator)
+	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#findWithDynamicQuery(DynamicQuery, int, int, OrderByComparator)
 	 */
 	public static List<Foo> findWithDynamicQuery(DynamicQuery dynamicQuery,
 		int start, int end, OrderByComparator<Foo> orderByComparator) {
@@ -93,14 +93,14 @@ public class FooUtil {
 	}
 
 	/**
-	 * @see com.liferay.portal.service.persistence.BasePersistence#update(com.liferay.portal.model.BaseModel)
+	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#update(com.liferay.portal.kernel.model.BaseModel)
 	 */
 	public static Foo update(Foo foo) {
 		return getPersistence().update(foo);
 	}
 
 	/**
-	 * @see com.liferay.portal.service.persistence.BasePersistence#update(com.liferay.portal.model.BaseModel, ServiceContext)
+	 * @see com.liferay.portal.kernel.service.persistence.BasePersistence#update(com.liferay.portal.kernel.model.BaseModel, ServiceContext)
 	 */
 	public static Foo update(Foo foo, ServiceContext serviceContext) {
 		return getPersistence().update(foo, serviceContext);
@@ -182,7 +182,7 @@ public class FooUtil {
 	*/
 	public static Foo findByUuid_First(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByUuid_First(uuid, orderByComparator);
 	}
 
@@ -208,7 +208,7 @@ public class FooUtil {
 	*/
 	public static Foo findByUuid_Last(java.lang.String uuid,
 		OrderByComparator<Foo> orderByComparator)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByUuid_Last(uuid, orderByComparator);
 	}
 
@@ -235,7 +235,7 @@ public class FooUtil {
 	*/
 	public static Foo[] findByUuid_PrevAndNext(long fooId,
 		java.lang.String uuid, OrderByComparator<Foo> orderByComparator)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_PrevAndNext(fooId, uuid, orderByComparator);
 	}
@@ -268,7 +268,7 @@ public class FooUtil {
 	* @throws NoSuchFooException if a matching foo could not be found
 	*/
 	public static Foo findByUUID_G(java.lang.String uuid, long groupId)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByUUID_G(uuid, groupId);
 	}
 
@@ -304,7 +304,7 @@ public class FooUtil {
 	* @return the foo that was removed
 	*/
 	public static Foo removeByUUID_G(java.lang.String uuid, long groupId)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence().removeByUUID_G(uuid, groupId);
 	}
 
@@ -402,7 +402,7 @@ public class FooUtil {
 	*/
 	public static Foo findByUuid_C_First(java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_C_First(uuid, companyId, orderByComparator);
 	}
@@ -432,7 +432,7 @@ public class FooUtil {
 	*/
 	public static Foo findByUuid_C_Last(java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_C_Last(uuid, companyId, orderByComparator);
 	}
@@ -464,7 +464,7 @@ public class FooUtil {
 	public static Foo[] findByUuid_C_PrevAndNext(long fooId,
 		java.lang.String uuid, long companyId,
 		OrderByComparator<Foo> orderByComparator)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByUuid_C_PrevAndNext(fooId, uuid, companyId,
 			orderByComparator);
@@ -567,7 +567,7 @@ public class FooUtil {
 	*/
 	public static Foo findByField2_First(boolean field2,
 		OrderByComparator<Foo> orderByComparator)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByField2_First(field2, orderByComparator);
 	}
 
@@ -593,7 +593,7 @@ public class FooUtil {
 	*/
 	public static Foo findByField2_Last(boolean field2,
 		OrderByComparator<Foo> orderByComparator)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByField2_Last(field2, orderByComparator);
 	}
 
@@ -620,7 +620,7 @@ public class FooUtil {
 	*/
 	public static Foo[] findByField2_PrevAndNext(long fooId, boolean field2,
 		OrderByComparator<Foo> orderByComparator)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence()
 				   .findByField2_PrevAndNext(fooId, field2, orderByComparator);
 	}
@@ -680,7 +680,7 @@ public class FooUtil {
 	* @throws NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo remove(long fooId)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence().remove(fooId);
 	}
 
@@ -696,7 +696,7 @@ public class FooUtil {
 	* @throws NoSuchFooException if a foo with the primary key could not be found
 	*/
 	public static Foo findByPrimaryKey(long fooId)
-		throws com.liferay.sampleservicebuilder.NoSuchFooException {
+		throws com.liferay.sampleservicebuilder.exception.NoSuchFooException {
 		return getPersistence().findByPrimaryKey(fooId);
 	}
 
@@ -804,13 +804,6 @@ public class FooUtil {
 		}
 
 		return _persistence;
-	}
-
-	/**
-	 * @deprecated As of 6.2.0
-	 */
-	@Deprecated
-	public void setPersistence(FooPersistence persistence) {
 	}
 
 	private static FooPersistence _persistence;

@@ -16,7 +16,7 @@ package com.liferay.sampleservicebuilder.service;
 
 import aQute.bnd.annotation.ProviderType;
 
-import com.liferay.portal.service.ServiceWrapper;
+import com.liferay.portal.kernel.service.ServiceWrapper;
 
 /**
  * Provides a wrapper for {@link FooService}.
@@ -43,13 +43,13 @@ public class FooServiceWrapper implements FooService,
 	}
 
 	@Override
-	public com.liferay.portal.model.User getUser(long userId)
+	public com.liferay.portal.kernel.model.User getUser(long userId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _fooService.getUser(userId);
 	}
 
 	@Override
-	public java.util.List<com.liferay.portal.model.Group> getUserSitesGroups()
+	public java.util.List<com.liferay.portal.kernel.model.Group> getUserSitesGroups()
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _fooService.getUserSitesGroups();
 	}
@@ -59,22 +59,6 @@ public class FooServiceWrapper implements FooService,
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable {
 		return _fooService.invokeMethod(name, parameterTypes, arguments);
-	}
-
-	/**
-	 * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
-	 */
-	@Deprecated
-	public FooService getWrappedFooService() {
-		return _fooService;
-	}
-
-	/**
-	 * @deprecated As of 6.1.0, replaced by {@link #setWrappedService}
-	 */
-	@Deprecated
-	public void setWrappedFooService(FooService fooService) {
-		_fooService = fooService;
 	}
 
 	@Override
