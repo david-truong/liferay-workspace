@@ -1285,7 +1285,7 @@ Please find a solution that does not require portal-impl.jar.
 					<isset property="theme.type" />
 				</not>
 				<then>
-					<var name="theme.type" value="vm" />
+					<var name="theme.type" value="ftl" />
 				</then>
 			</if>
 
@@ -1306,7 +1306,6 @@ Please find a solution that does not require portal-impl.jar.
 					<copy todir="@{module.dir}/docroot/templates" overwrite="true" preservelastmodified="true">
 						<fileset
 							dir="${unstyled.tmp.dir}/_unstyled/templates"
-							excludes="init.${theme.type}"
 							includes="*.${theme.type}"
 						/>
 					</copy>
@@ -1330,7 +1329,6 @@ Please find a solution that does not require portal-impl.jar.
 						<copy todir="@{module.dir}/docroot/templates" overwrite="true" preservelastmodified="true">
 							<fileset
 								dir="${unstyled.tmp.dir}/_unstyled/templates"
-								excludes="init.${theme.type}"
 								includes="*.${theme.type}"
 							/>
 						</copy>
@@ -1797,6 +1795,34 @@ Please find a solution that does not require portal-impl.jar.
 		</sequential>
 	</macrodef>
 
+	<macrodef name="instrument-code">
+		<attribute name="module.dir" />
+		<attribute name="test.type" />
+
+		<sequential>
+			<if>
+				<equals arg1="${junit.code.coverage}" arg2="true" />
+				<then>
+					<delete file="@{module.dir}/test-coverage/cobertura.ser" />
+
+					<cobertura-instrument
+						datafile="@{module.dir}/test-coverage/@{test.type}/cobertura.ser"
+						todir="@{module.dir}/test-coverage/@{test.type}"
+					>
+						<ignore regex="org.apache.log4j.*" />
+
+						<fileset dir="@{module.dir}/classes" erroronmissingdir="false">
+							<include name="**/*.class" />
+						</fileset>
+						<fileset dir="@{module.dir}/docroot/WEB-INF/classes" erroronmissingdir="false">
+							<include name="**/*.class" />
+						</fileset>
+					</cobertura-instrument>
+				</then>
+			</if>
+		</sequential>
+	</macrodef>
+
 	<macrodef name="jar-javadoc">
 		<attribute name="module.dir" />
 
@@ -2130,34 +2156,6 @@ Please find a solution that does not require portal-impl.jar.
 						jarfile="${plugin.sources.file}"
 					/>
 				</else>
-			</if>
-		</sequential>
-	</macrodef>
-
-	<macrodef name="instrument-code">
-		<attribute name="module.dir" />
-		<attribute name="test.type" />
-
-		<sequential>
-			<if>
-				<equals arg1="${junit.code.coverage}" arg2="true" />
-				<then>
-					<delete file="@{module.dir}/test-coverage/cobertura.ser" />
-
-					<cobertura-instrument
-						datafile="@{module.dir}/test-coverage/@{test.type}/cobertura.ser"
-						todir="@{module.dir}/test-coverage/@{test.type}"
-					>
-						<ignore regex="org.apache.log4j.*" />
-
-						<fileset dir="@{module.dir}/classes" erroronmissingdir="false">
-							<include name="**/*.class" />
-						</fileset>
-						<fileset dir="@{module.dir}/docroot/WEB-INF/classes" erroronmissingdir="false">
-							<include name="**/*.class" />
-						</fileset>
-					</cobertura-instrument>
-				</then>
 			</if>
 		</sequential>
 	</macrodef>
@@ -2910,8 +2908,8 @@ Please find a solution that does not require portal-impl.jar.
 			</if>
 
 			<var name="frontend.theme.web.file" unset="true" />
-			<var name="frontend.theme.web.jar.path" unset="true"/>
-			<var name="theme.tmp.dir" unset="true"/>
+			<var name="frontend.theme.web.jar.path" unset="true" />
+			<var name="theme.tmp.dir" unset="true" />
 		</sequential>
 	</macrodef>
 
@@ -3451,6 +3449,7 @@ for (String path : paths) {
 			newenvironment="true"
 		>
 			<jvmarg value="-Xmx512m" />
+			<arg value="javadoc.generate.xml=${generate.xml}" />
 			<arg value="javadoc.init=${init}" />
 			<arg value="javadoc.input.dir=${input.dir}" />
 			<arg value="javadoc.limit=${limit}" />

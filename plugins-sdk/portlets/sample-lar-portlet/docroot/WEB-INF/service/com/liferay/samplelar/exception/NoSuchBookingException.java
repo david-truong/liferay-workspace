@@ -12,27 +12,27 @@
  * details.
  */
 
-package com.liferay.sampleservicebuilder;
+package com.liferay.samplelar.exception;
 
-import com.liferay.portal.NoSuchModelException;
+import com.liferay.portal.kernel.exception.NoSuchModelException;
 
 /**
- * @author Brian Wing Shun Chan
+ * @author Mate Thurzo
  */
-public class NoSuchFooException extends NoSuchModelException {
+public class NoSuchBookingException extends NoSuchModelException {
 
-	public NoSuchFooException() {
+	public NoSuchBookingException() {
 	}
 
-	public NoSuchFooException(String msg) {
+	public NoSuchBookingException(String msg) {
 		super(msg);
 	}
 
-	public NoSuchFooException(String msg, Throwable cause) {
+	public NoSuchBookingException(String msg, Throwable cause) {
 		super(msg, cause);
 	}
 
-	public NoSuchFooException(Throwable cause) {
+	public NoSuchBookingException(Throwable cause) {
 		super(cause);
 	}
 

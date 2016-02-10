@@ -14,17 +14,17 @@
 
 package com.liferay.resourcesimporter.messaging;
 
+import com.liferay.exportimport.kernel.lar.ExportImportThreadLocal;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.messaging.HotDeployMessageListener;
 import com.liferay.portal.kernel.messaging.Message;
 import com.liferay.portal.kernel.messaging.MessageBusUtil;
+import com.liferay.portal.kernel.model.Company;
+import com.liferay.portal.kernel.security.auth.CompanyThreadLocal;
+import com.liferay.portal.kernel.service.CompanyLocalServiceUtil;
 import com.liferay.portal.kernel.servlet.ServletContextPool;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.model.Company;
-import com.liferay.portal.security.auth.CompanyThreadLocal;
-import com.liferay.portal.service.CompanyLocalServiceUtil;
-import com.liferay.portlet.exportimport.lar.ExportImportThreadLocal;
 import com.liferay.resourcesimporter.util.Importer;
 import com.liferay.resourcesimporter.util.ImporterException;
 import com.liferay.resourcesimporter.util.ImporterFactory;
@@ -85,7 +85,7 @@ public class ResourcesImporterHotDeployMessageListener
 		}
 	}
 
-
+	@Override
 	protected void onDeploy(Message message) throws Exception {
 		initialize(message);
 	}

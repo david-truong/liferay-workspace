@@ -14,11 +14,11 @@
 
 package com.liferay.resourcesimporter.util;
 
+import com.liferay.exportimport.kernel.lar.PortletDataHandlerKeys;
+import com.liferay.exportimport.kernel.lar.UserIdStrategy;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.service.LayoutLocalServiceUtil;
-import com.liferay.portlet.exportimport.lar.PortletDataHandlerKeys;
-import com.liferay.portlet.exportimport.lar.UserIdStrategy;
+import com.liferay.portal.kernel.service.LayoutLocalServiceUtil;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -35,7 +35,7 @@ import java.util.Map;
  */
 public class LARImporter extends BaseImporter {
 
-
+	@Override
 	public void importResources() throws Exception {
 		if (_privateLARInputStream != null) {
 			LayoutLocalServiceUtil.importLayouts(

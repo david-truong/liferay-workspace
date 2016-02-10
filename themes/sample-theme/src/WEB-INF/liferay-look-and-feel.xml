@@ -5,7 +5,7 @@
 	<compatibility>
 		<version>7.0.0+</version>
 	</compatibility>
-	<theme id="sample-theme" name="Sample Theme">
+	<theme id="sample" name="sample">
 		<template-extension>ftl</template-extension>
 	</theme>
 </look-and-feel>

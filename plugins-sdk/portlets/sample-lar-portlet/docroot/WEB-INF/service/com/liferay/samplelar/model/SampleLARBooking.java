@@ -16,8 +16,9 @@ package com.liferay.samplelar.model;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.portal.kernel.annotation.ImplementationClassName;
+import com.liferay.portal.kernel.model.PersistedModel;
 import com.liferay.portal.kernel.util.Accessor;
-import com.liferay.portal.model.PersistedModel;
 
 /**
  * The extended model interface for the SampleLARBooking service. Represents a row in the &quot;SampleLARBooking&quot; database table, with each column mapped to a property of this class.
@@ -28,6 +29,7 @@ import com.liferay.portal.model.PersistedModel;
  * @see com.liferay.samplelar.model.impl.SampleLARBookingModelImpl
  * @generated
  */
+@ImplementationClassName("com.liferay.samplelar.model.impl.SampleLARBookingImpl")
 @ProviderType
 public interface SampleLARBooking extends SampleLARBookingModel, PersistedModel {
 	/*
