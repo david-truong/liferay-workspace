@@ -9,7 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * @author David Truong
+ * @author Igor Arouca
  */
 public class SamplePortletTest {
 
