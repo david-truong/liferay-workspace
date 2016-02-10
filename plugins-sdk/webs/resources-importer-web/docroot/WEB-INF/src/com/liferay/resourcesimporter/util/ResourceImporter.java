@@ -14,17 +14,17 @@
 
 package com.liferay.resourcesimporter.util;
 
+import com.liferay.document.library.kernel.model.DLFolderConstants;
 import com.liferay.dynamic.data.lists.model.DDLRecordSet;
 import com.liferay.dynamic.data.mapping.model.DDMStructure;
 import com.liferay.dynamic.data.mapping.model.DDMTemplateConstants;
 import com.liferay.dynamic.data.mapping.service.DDMStructureLocalServiceUtil;
 import com.liferay.portal.kernel.util.FileUtil;
+import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.util.PortalUtil;
-import com.liferay.portlet.documentlibrary.model.DLFolderConstants;
 
 import java.io.File;
 import java.io.InputStream;
@@ -42,12 +42,12 @@ import java.util.Set;
  */
 public class ResourceImporter extends FileSystemImporter {
 
-
+	@Override
 	public void importResources() throws Exception {
 		doImportResources();
 	}
 
-
+	@Override
 	protected void addApplicationDisplayTemplate(
 			String parentDirName, String dirName, long classNameId)
 		throws Exception {
@@ -83,7 +83,7 @@ public class ResourceImporter extends FileSystemImporter {
 		}
 	}
 
-
+	@Override
 	protected void addDDLDisplayTemplates(
 			String ddmStructureKey, String dirName, String fileName)
 		throws Exception {
@@ -124,7 +124,7 @@ public class ResourceImporter extends FileSystemImporter {
 		}
 	}
 
-
+	@Override
 	protected void addDDLFormTemplates(
 			String ddmStructureKey, String dirName, String fileName)
 		throws Exception {
@@ -165,7 +165,7 @@ public class ResourceImporter extends FileSystemImporter {
 		}
 	}
 
-
+	@Override
 	protected void addDDLStructures(String dirName) throws Exception {
 		Set<String> resourcePaths = servletContext.getResourcePaths(
 			resourcesDir.concat(dirName));
@@ -187,7 +187,7 @@ public class ResourceImporter extends FileSystemImporter {
 		}
 	}
 
-
+	@Override
 	protected void addDDMStructures(String parentStructureId, String dirName)
 		throws Exception {
 
@@ -214,7 +214,7 @@ public class ResourceImporter extends FileSystemImporter {
 		}
 	}
 
-
+	@Override
 	protected void addDDMTemplates(String ddmStructureKey, String dirName)
 		throws Exception {
 
@@ -241,7 +241,7 @@ public class ResourceImporter extends FileSystemImporter {
 		}
 	}
 
-
+	@Override
 	protected void addDLFileEntries(String dirName) throws Exception {
 		Set<String> resourcePaths = servletContext.getResourcePaths(
 			resourcesDir.concat(dirName));
@@ -278,7 +278,7 @@ public class ResourceImporter extends FileSystemImporter {
 			urlConnection.getInputStream(), urlConnection.getContentLength());
 	}
 
-
+	@Override
 	protected long addDLFolder(long parentFolderId, String resourcePath)
 		throws Exception {
 
@@ -307,7 +307,7 @@ public class ResourceImporter extends FileSystemImporter {
 		return folderId;
 	}
 
-
+	@Override
 	protected void addJournalArticles(
 			String ddmStructureKey, String ddmTemplateKey, String dirName)
 		throws Exception {
@@ -336,7 +336,7 @@ public class ResourceImporter extends FileSystemImporter {
 		}
 	}
 
-
+	@Override
 	protected void addLayoutPrototype(String dirName) throws Exception {
 		Set<String> resourcePaths = servletContext.getResourcePaths(
 			resourcesDir.concat(dirName));
@@ -360,7 +360,7 @@ public class ResourceImporter extends FileSystemImporter {
 		}
 	}
 
-
+	@Override
 	protected InputStream getInputStream(String fileName) throws Exception {
 		URL url = servletContext.getResource(resourcesDir.concat(fileName));
 
