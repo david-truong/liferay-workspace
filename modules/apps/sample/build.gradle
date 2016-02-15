@@ -1,4 +1,15 @@
 apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+repositories {
+	mavenLocal()
+
+	mavenCentral()
+
+	maven {
+		url "http://cdn.repository.liferay.com/nexus/content/groups/public"
+	}
+}
 
 configurations {
 	portalTest
@@ -14,7 +25,13 @@ dependencies {
 
 	testCompile 'junit:junit:4.4'
 
-	testIntegrationCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.1'
+	testIntegrationCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.3'
+}
+
+idea {
+	module {
+		scopes.TEST.plus += [configurations.portalTest]
+	}
 }
 
 eclipse {
