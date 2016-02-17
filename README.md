@@ -1,5 +1,7 @@
 # liferay-workspace
 
+[![Build Status](https://travis-ci.org/david-truong/liferay-workspace.svg?branch=master)](https://travis-ci.org/david-truong/liferay-workspace)
+
 A highly opinionated way of structure your next Liferay 7.0 project.
 
 #### Requirements
