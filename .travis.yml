@@ -4,10 +4,10 @@ jdk:
   - oraclejdk7
   - openjdk7
 
-install: ./gradlew --version
+install: travis_wait ./gradlew clean
 # TO debug
 # script: ./gradlew build --debug
-script: ./gradlew clean build
+script: ./gradlew build
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
