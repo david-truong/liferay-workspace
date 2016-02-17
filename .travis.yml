@@ -4,6 +4,11 @@ jdk:
   - oraclejdk7
   - openjdk7
 
+matrix:
+  fast_finish: true
+  allow_failures:
+      - jdk: openjdk7
+
 install: travis_wait ./gradlew clean
 # TO debug
 # script: ./gradlew build --debug
