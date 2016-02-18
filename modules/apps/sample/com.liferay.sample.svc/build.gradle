@@ -1,0 +1,31 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
+		}
+	}
+	dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "latest.release"
+	}
+}
+
+apply plugin: "com.liferay.portal.tools.service.builder"
+
+dependencies {
+	compile 'biz.aQute.bnd:biz.aQute.bnd.annotation:3.0.0'
+    compile 'org.osgi:org.osgi.core:6.0.0'
+    compile 'org.osgi:org.osgi.compendium:5.0.0'
+    compile 'com.liferay:com.liferay.osgi.util:2.0.7'
+    compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
+    compile 'com.liferay:com.liferay.portal.spring.extender:1.0.4'
+    compile project(':modules:apps:sample:com.liferay.sample.api')
+}
+
+buildService {
+	apiDir = "../com.liferay.sample.api/src/main/java"
+	testDir = "src/main/test"
+	osgiModule = true
+	propsUtil = "com.liferay.sample.service.util.PropsUtil"
+}
+
+version = '1.0.0'
