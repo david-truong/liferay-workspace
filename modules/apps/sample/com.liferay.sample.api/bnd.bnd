@@ -1,0 +1,12 @@
+Bundle-Version: 1.0.0.${tstamp}
+
+Import-Package: \
+    com.liferay.portal.service;version="7.0.0",\
+    org.osgi.framework;version="[1.7,2)",\
+    *
+
+Export-Package: \
+	com.liferay.sample.exception,\
+	com.liferay.sample.model,\
+	com.liferay.sample.service,\
+	com.liferay.sample.service.persistence
