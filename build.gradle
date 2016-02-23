@@ -1,3 +1,4 @@
+//Add extra provided osgi bundles to your installation
 configurations {
 	providedModules
 }
@@ -16,6 +17,7 @@ configure([initBundle, distBundleTar, distBundleZip]) {
 	}
 }
 
+//This will delete your liferay home directory when you call clean
 clean {
 	finalizedBy initBundle
 }
