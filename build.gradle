@@ -10,11 +10,6 @@ repositories {
 	jcenter()
 }
 
-task deployProvidedModules(type: Copy) {
-	from configurations.providedModules.files
-	into temporaryDir.name + '/osgi/modules'
-}
-
 configure([initBundle, distBundleTar, distBundleZip]) {
 	into("osgi/modules") {
 		from configurations.providedModules
