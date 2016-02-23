@@ -1,3 +1,27 @@
+configurations {
+	providedModules
+}
+
+dependencies {
+	providedModules 'org.apache.cxf:cxf-rt-frontend-jaxws:3.1.5'
+}
+
+repositories {
+	jcenter()
+}
+
+task deployProvidedModules(type: Copy) {
+	from {
+		configurations.providedModules.files
+	}
+
+	into 'bundles/osgi/modules'
+}
+
+initBundle {
+	finalizedBy deployProvidedModules
+}
+
 clean {
 	finalizedBy initBundle
 }
