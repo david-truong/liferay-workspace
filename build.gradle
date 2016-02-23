@@ -11,15 +11,14 @@ repositories {
 }
 
 task deployProvidedModules(type: Copy) {
-	from {
-		configurations.providedModules.files
-	}
-
-	into 'bundles/osgi/modules'
+	from configurations.providedModules.files
+	into temporaryDir.name + '/osgi/modules'
 }
 
-initBundle {
-	finalizedBy deployProvidedModules
+configure([initBundle, distBundleTar, distBundleZip]) {
+	into("osgi/modules") {
+		from configurations.providedModules
+	}
 }
 
 clean {
