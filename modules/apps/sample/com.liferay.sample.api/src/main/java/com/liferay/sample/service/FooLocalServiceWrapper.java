@@ -32,6 +32,15 @@ public class FooLocalServiceWrapper implements FooLocalService,
 		_fooLocalService = fooLocalService;
 	}
 
+	@Override
+	public void addFoo(java.lang.String field1, boolean field2, int field3,
+		java.util.Date field4, java.lang.String field5,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		_fooLocalService.addFoo(field1, field2, field3, field4, field5,
+			serviceContext);
+	}
+
 	/**
 	* Adds the foo to the database. Also notifies the appropriate model listeners.
 	*
@@ -230,6 +239,12 @@ public class FooLocalServiceWrapper implements FooLocalService,
 		return _fooLocalService.getFooByUuidAndGroupId(uuid, groupId);
 	}
 
+	@Override
+	public java.util.List<com.liferay.sample.model.Foo> getFoos(
+		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.sample.model.Foo> obc) {
+		return _fooLocalService.getFoos(obc);
+	}
+
 	/**
 	* Returns a range of all the foos.
 	*
@@ -245,6 +260,13 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	public java.util.List<com.liferay.sample.model.Foo> getFoos(int start,
 		int end) {
 		return _fooLocalService.getFoos(start, end);
+	}
+
+	@Override
+	public java.util.List<com.liferay.sample.model.Foo> getFoos(int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.sample.model.Foo> obc) {
+		return _fooLocalService.getFoos(start, end, obc);
 	}
 
 	/**
@@ -310,6 +332,14 @@ public class FooLocalServiceWrapper implements FooLocalService,
 		return _fooLocalService.getPersistedModel(primaryKeyObj);
 	}
 
+	@Override
+	public void updateAsset(long userId, com.liferay.sample.model.Foo foo,
+		long[] assetCategoryIds, java.lang.String[] assetTagNames)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		_fooLocalService.updateAsset(userId, foo, assetCategoryIds,
+			assetTagNames);
+	}
+
 	/**
 	* Updates the foo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
@@ -320,6 +350,15 @@ public class FooLocalServiceWrapper implements FooLocalService,
 	public com.liferay.sample.model.Foo updateFoo(
 		com.liferay.sample.model.Foo foo) {
 		return _fooLocalService.updateFoo(foo);
+	}
+
+	@Override
+	public void updateFoo(long fooId, java.lang.String field1, boolean field2,
+		int field3, java.util.Date field4, java.lang.String field5,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		_fooLocalService.updateFoo(fooId, field1, field2, field3, field4,
+			field5, serviceContext);
 	}
 
 	@Override

@@ -30,6 +30,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -39,6 +40,7 @@ import com.liferay.sample.model.Foo;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,6 +65,9 @@ public interface FooLocalService extends BaseLocalService,
 	 *
 	 * Never modify or reference this interface directly. Always use {@link FooLocalServiceUtil} to access the foo local service. Add custom service methods to {@link com.liferay.sample.service.impl.FooLocalServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public void addFoo(java.lang.String field1, boolean field2, int field3,
+		Date field4, java.lang.String field5, ServiceContext serviceContext)
+		throws PortalException;
 
 	/**
 	* Adds the foo to the database. Also notifies the appropriate model listeners.
@@ -208,6 +213,9 @@ public interface FooLocalService extends BaseLocalService,
 	public Foo getFooByUuidAndGroupId(java.lang.String uuid, long groupId)
 		throws PortalException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Foo> getFoos(OrderByComparator<Foo> obc);
+
 	/**
 	* Returns a range of all the foos.
 	*
@@ -221,6 +229,9 @@ public interface FooLocalService extends BaseLocalService,
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Foo> getFoos(int start, int end);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Foo> getFoos(int start, int end, OrderByComparator<Foo> obc);
 
 	/**
 	* Returns all the foos matching the UUID and company.
@@ -271,6 +282,9 @@ public interface FooLocalService extends BaseLocalService,
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
 
+	public void updateAsset(long userId, Foo foo, long[] assetCategoryIds,
+		java.lang.String[] assetTagNames) throws PortalException;
+
 	/**
 	* Updates the foo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
@@ -279,4 +293,8 @@ public interface FooLocalService extends BaseLocalService,
 	*/
 	@Indexable(type = IndexableType.REINDEX)
 	public Foo updateFoo(Foo foo);
+
+	public void updateFoo(long fooId, java.lang.String field1, boolean field2,
+		int field3, Date field4, java.lang.String field5,
+		ServiceContext serviceContext) throws PortalException;
 }
