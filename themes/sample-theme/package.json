@@ -7,9 +7,9 @@
 	"liferayTheme": {
 		"baseTheme": "styled",
 		"screenshot": "",
-		"supportCompass": false,
 		"templateLanguage": "ftl",
-		"version": "7.0"
+		"version": "7.0",
+		"rubySass": false
 	},
 	"devDependencies": {
 		"gulp": "^3.8.10",
