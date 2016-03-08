@@ -16,9 +16,16 @@ package com.liferay.sample.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import com.liferay.sample.service.FooServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
- * {@link com.liferay.sample.service.FooServiceUtil} service utility. The
+ * {@link FooServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
@@ -53,9 +60,38 @@ import aQute.bnd.annotation.ProviderType;
  * @author Brian Wing Shun Chan
  * @see FooServiceHttp
  * @see com.liferay.sample.model.FooSoap
- * @see com.liferay.sample.service.FooServiceUtil
+ * @see FooServiceUtil
  * @generated
  */
 @ProviderType
 public class FooServiceSoap {
+	public static com.liferay.portal.kernel.model.User getUser(long userId)
+		throws RemoteException {
+		try {
+			com.liferay.portal.kernel.model.User returnValue = FooServiceUtil.getUser(userId);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.portal.kernel.model.GroupSoap[] getUserSitesGroups()
+		throws RemoteException {
+		try {
+			java.util.List<com.liferay.portal.kernel.model.Group> returnValue = FooServiceUtil.getUserSitesGroups();
+
+			return com.liferay.portal.kernel.model.GroupSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(FooServiceSoap.class);
 }

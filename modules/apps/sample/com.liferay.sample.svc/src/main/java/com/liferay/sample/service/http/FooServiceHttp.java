@@ -16,12 +16,21 @@ package com.liferay.sample.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.auth.HttpPrincipal;
+import com.liferay.portal.kernel.service.http.TunnelUtil;
+import com.liferay.portal.kernel.util.MethodHandler;
+import com.liferay.portal.kernel.util.MethodKey;
+
+import com.liferay.sample.service.FooServiceUtil;
+
 /**
  * Provides the HTTP utility for the
- * {@link com.liferay.sample.service.FooServiceUtil} service utility. The
+ * {@link FooServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it requires an additional
- * {@link com.liferay.portal.kernel.security.auth.HttpPrincipal} parameter.
+ * {@link HttpPrincipal} parameter.
  *
  * <p>
  * The benefits of using the HTTP utility is that it is fast and allows for
@@ -40,10 +49,79 @@ import aQute.bnd.annotation.ProviderType;
  *
  * @author Brian Wing Shun Chan
  * @see FooServiceSoap
- * @see com.liferay.portal.kernel.security.auth.HttpPrincipal
- * @see com.liferay.sample.service.FooServiceUtil
+ * @see HttpPrincipal
+ * @see FooServiceUtil
  * @generated
  */
 @ProviderType
 public class FooServiceHttp {
+	public static com.liferay.portal.kernel.model.User getUser(
+		HttpPrincipal httpPrincipal, long userId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		try {
+			MethodKey methodKey = new MethodKey(FooServiceUtil.class,
+					"getUser", _getUserParameterTypes0);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey, userId);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				if (e instanceof com.liferay.portal.kernel.exception.PortalException) {
+					throw (com.liferay.portal.kernel.exception.PortalException)e;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return (com.liferay.portal.kernel.model.User)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
+	public static java.util.List<com.liferay.portal.kernel.model.Group> getUserSitesGroups(
+		HttpPrincipal httpPrincipal)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		try {
+			MethodKey methodKey = new MethodKey(FooServiceUtil.class,
+					"getUserSitesGroups", _getUserSitesGroupsParameterTypes1);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				if (e instanceof com.liferay.portal.kernel.exception.PortalException) {
+					throw (com.liferay.portal.kernel.exception.PortalException)e;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return (java.util.List<com.liferay.portal.kernel.model.Group>)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(FooServiceHttp.class);
+	private static final Class<?>[] _getUserParameterTypes0 = new Class[] {
+			long.class
+		};
+	private static final Class<?>[] _getUserSitesGroupsParameterTypes1 = new Class[] {
+			
+		};
 }

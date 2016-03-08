@@ -16,6 +16,13 @@ package com.liferay.sample.service.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
+import java.util.List;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.model.Group;
+import com.liferay.portal.kernel.model.User;
+import com.liferay.portal.kernel.service.GroupServiceUtil;
+import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.sample.service.base.FooServiceBaseImpl;
 
 /**
@@ -39,4 +46,11 @@ public class FooServiceImpl extends FooServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.sample.service.FooServiceUtil} to access the foo remote service.
 	 */
+	public User getUser(long userId) throws PortalException {
+		return UserLocalServiceUtil.getUserById(userId);
+	}
+
+	public List<Group> getUserSitesGroups() throws PortalException {
+		return GroupServiceUtil.getUserSitesGroups();
+	}
 }
