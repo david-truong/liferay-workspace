@@ -3,7 +3,7 @@ dependencies {
     compile 'org.osgi:org.osgi.core:6.0.0'
     compile 'org.osgi:org.osgi.compendium:5.0.0'
     compile 'com.liferay:com.liferay.osgi.util:2.0.7'
-    compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
+    compile 'com.liferay.portal:com.liferay.portal.kernel:1.0.2'
 }
 
 version = '1.0.0'
