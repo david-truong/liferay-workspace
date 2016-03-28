@@ -1,13 +1,12 @@
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-
 repositories {
-	mavenLocal()
-
 	mavenCentral()
 
 	maven {
 		url "http://cdn.repository.liferay.com/nexus/content/groups/public"
+	}
+
+	maven {
+		url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
 	}
 }
 
@@ -16,28 +15,16 @@ configurations {
 }
 
 dependencies {
-	compile 'com.liferay.portal:portal-service:7.0.0-SNAPSHOT'
+	compile 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
 	compile 'javax.portlet:portlet-api:2.0'
 	compile 'org.osgi:org.osgi.compendium:5.0.0'
 
-	portalTest 'com.liferay.portal:portal-test-internal:7.0.0-SNAPSHOT'
-	portalTest 'com.liferay.portal:portal-test:7.0.0-SNAPSHOT'
+	testCompile 'com.liferay.portal:portal-test-internal:7.0.0-SNAPSHOT'
+	testCompile 'com.liferay.portal:portal-test:7.0.0-SNAPSHOT'
 
 	testCompile 'junit:junit:4.4'
 
 	testIntegrationCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.1'
-}
-
-idea {
-	module {
-		scopes.TEST.plus += [configurations.portalTest]
-	}
-}
-
-eclipse {
-	classpath {
-		plusConfigurations += [configurations.portalTest]
-	}
 }
 
 sourceSets {
