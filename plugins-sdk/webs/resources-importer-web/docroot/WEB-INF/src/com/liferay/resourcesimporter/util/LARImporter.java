@@ -35,7 +35,7 @@ import java.util.Map;
  */
 public class LARImporter extends BaseImporter {
 
-	@Override
+
 	public void importResources() throws Exception {
 		if (_privateLARInputStream != null) {
 			LayoutLocalServiceUtil.importLayouts(

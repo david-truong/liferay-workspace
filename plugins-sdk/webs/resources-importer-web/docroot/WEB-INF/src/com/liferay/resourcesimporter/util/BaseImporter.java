@@ -45,7 +45,7 @@ import javax.servlet.ServletContext;
  */
 public abstract class BaseImporter implements Importer {
 
-	@Override
+
 	public void afterPropertiesSet() throws Exception {
 		User user = UserLocalServiceUtil.getDefaultUser(companyId);
 
@@ -136,17 +136,17 @@ public abstract class BaseImporter implements Importer {
 		}
 	}
 
-	@Override
+
 	public long getGroupId() {
 		return groupId;
 	}
 
-	@Override
+
 	public String getTargetClassName() {
 		return targetClassName;
 	}
 
-	@Override
+
 	public long getTargetClassPK() {
 		return targetClassPK;
 	}
@@ -161,7 +161,7 @@ public abstract class BaseImporter implements Importer {
 		return targetValueMap;
 	}
 
-	@Override
+
 	public boolean isCompanyGroup() throws Exception {
 		Group group = GroupLocalServiceUtil.fetchGroup(groupId);
 
@@ -172,67 +172,67 @@ public abstract class BaseImporter implements Importer {
 		return group.isCompany();
 	}
 
-	@Override
+
 	public boolean isDeveloperModeEnabled() {
 		return developerModeEnabled;
 	}
 
-	@Override
+
 	public boolean isExisting() {
 		return existing;
 	}
 
-	@Override
+
 	public void setAppendVersion(boolean appendVersion) {
 		this.appendVersion = appendVersion;
 	}
 
-	@Override
+
 	public void setCompanyId(long companyId) {
 		this.companyId = companyId;
 	}
 
-	@Override
+
 	public void setDeveloperModeEnabled(boolean developerModeEnabled) {
 		this.developerModeEnabled = developerModeEnabled;
 	}
 
-	@Override
+
 	public void setGroupId(long groupId) {
 		this.groupId = groupId;
 	}
 
-	@Override
+
 	public void setResourcesDir(String resourcesDir) {
 		this.resourcesDir = resourcesDir;
 	}
 
-	@Override
+
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
 	}
 
-	@Override
+
 	public void setServletContextName(String servletContextName) {
 		this.servletContextName = servletContextName;
 	}
 
-	@Override
+
 	public void setTargetClassName(String targetClassName) {
 		this.targetClassName = targetClassName;
 	}
 
-	@Override
+
 	public void setTargetValue(String targetValue) {
 		this.targetValue = targetValue;
 	}
 
-	@Override
+
 	public void setUpdateModeEnabled(boolean updateModeEnabled) {
 		this.updateModeEnabled = updateModeEnabled;
 	}
 
-	@Override
+
 	public void setVersion(String version) {
 		this.version = version;
 	}

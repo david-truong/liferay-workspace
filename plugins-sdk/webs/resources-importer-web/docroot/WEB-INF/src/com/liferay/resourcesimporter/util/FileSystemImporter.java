@@ -118,7 +118,7 @@ import javax.portlet.PortletPreferences;
  */
 public class FileSystemImporter extends BaseImporter {
 
-	@Override
+
 	public void importResources() throws Exception {
 		_resourcesDir = new File(resourcesDir);
 

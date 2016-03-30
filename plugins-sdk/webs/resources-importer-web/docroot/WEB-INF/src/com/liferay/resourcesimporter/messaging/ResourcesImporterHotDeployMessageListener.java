@@ -85,7 +85,7 @@ public class ResourcesImporterHotDeployMessageListener
 		}
 	}
 
-	@Override
+
 	protected void onDeploy(Message message) throws Exception {
 		initialize(message);
 	}
