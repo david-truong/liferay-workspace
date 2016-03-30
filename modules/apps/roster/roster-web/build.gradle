@@ -10,7 +10,7 @@ dependencies {
     compile 'com.liferay.portal:com.liferay.util.java:2.0.0'
     compile 'org.slf4j:slf4j-api:1.7.7'
     compile 'org.slf4j:slf4j-simple:1.7.7'
-    compile project(':modules:apps:sample:com.liferay.sample.api')
+    compile project(':modules:apps:roster:roster-api')
 }
 
 version = '1.0.0'

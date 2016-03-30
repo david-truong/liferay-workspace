@@ -18,7 +18,7 @@ dependencies {
     compile 'com.liferay:com.liferay.osgi.util:2.0.7'
     compile 'com.liferay.portal:com.liferay.portal.kernel:1.0.2'
     compile 'com.liferay:com.liferay.portal.spring.extender:1.0.4'
-    compile project(':modules:apps:sample:com.liferay.sample.api')
+    compile project(':modules:apps:roster:roster-api')
 }
 
 buildService {
