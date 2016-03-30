@@ -26,7 +26,7 @@ dependencies {
 
 	testCompile 'junit:junit:4.4'
 
-	testIntegrationCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.1'
+	testIntegrationCompile 'com.liferay:com.liferay.arquillian.extension.junit.bridge:1.0.5'
 }
 
 sourceSets {
