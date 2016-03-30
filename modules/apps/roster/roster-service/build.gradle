@@ -22,7 +22,7 @@ dependencies {
 }
 
 buildService {
-	apiDir = "../com.liferay.sample.api/src/main/java"
+	apiDir = "../roster-api/src/main/java"
 	testDir = "src/main/test"
 	osgiModule = true
 	propsUtil = "com.liferay.sample.service.util.PropsUtil"

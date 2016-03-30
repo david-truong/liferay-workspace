@@ -4,4 +4,7 @@
 	<bean id="com.liferay.sample.service.FooLocalService" class="com.liferay.sample.service.impl.FooLocalServiceImpl" />
 	<bean id="com.liferay.sample.service.FooService" class="com.liferay.sample.service.impl.FooServiceImpl" />
 	<bean id="com.liferay.sample.service.persistence.FooPersistence" class="com.liferay.sample.service.persistence.impl.FooPersistenceImpl" parent="basePersistence" />
+	<bean id="com.liferay.roster.service.RosterLocalService" class="com.liferay.roster.service.impl.RosterLocalServiceImpl" />
+	<bean id="com.liferay.roster.service.RosterService" class="com.liferay.roster.service.impl.RosterServiceImpl" />
+	<bean id="com.liferay.roster.service.persistence.RosterPersistence" class="com.liferay.roster.service.persistence.impl.RosterPersistenceImpl" parent="basePersistence" />
 </beans>

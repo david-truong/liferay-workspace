@@ -3,6 +3,7 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="com.liferay.sample.model.Foo" />
+	<import class="com.liferay.roster.model.Roster" />
 	<class name="com.liferay.sample.model.impl.FooImpl" table="FOO_Foo">
 		<id name="fooId" type="long">
 			<generator class="assigned" />
@@ -19,5 +20,15 @@
 		<property name="field3" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="field4" type="org.hibernate.type.TimestampType" />
 		<property name="field5" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.liferay.roster.model.impl.RosterImpl" table="ROSTER_Roster">
+		<id name="rosterId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" column="uuid_" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="clubId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 </hibernate-mapping>
