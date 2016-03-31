@@ -16,83 +16,50 @@
 
 <%@ include file="/init.jsp" %>
 
-<strong><liferay-ui:message key="welcome-to-the-sample-service-builder-portlet" /></strong>
+<strong><liferay-ui:message key="my-roster" /></strong>
 
 <aui:button-row>
-	<portlet:renderURL var="editFooURL">
-		<portlet:param name="mvcPath" value="/edit_foo.jsp" />
+	<portlet:renderURL var="editRosterURL">
+		<portlet:param name="mvcPath" value="/edit_roster.jsp" />
 		<portlet:param name="redirect" value="<%= currentURL %>" />
 	</portlet:renderURL>
 
-	<aui:button href="<%= editFooURL %>" value="add-foo" />
+	<aui:button href="<%= editRosterURL %>" value="add-roster" />
 </aui:button-row>
 
 <liferay-ui:search-container
-	total="<%= FooLocalServiceUtil.getFoosCount() %>"
+	total="<%= RosterLocalServiceUtil.getRostersCount() %>"
 >
 	<liferay-ui:search-container-results
-		results="<%= FooLocalServiceUtil.getFoos(searchContainer.getStart(), searchContainer.getEnd(), new FooField4Comparator()) %>"
+		results="<%= RosterLocalServiceUtil.getRosters(searchContainer.getStart(), searchContainer.getEnd()) %>"
 	/>
 
 	<liferay-ui:search-container-row
-		className="com.liferay.sample.model.Foo"
+		className="com.liferay.roster.model.Roster"
 		escapedModel="true"
-		modelVar="foo"
+		modelVar="roster"
 	>
 		<liferay-ui:search-container-column-text
 			name="id"
-			property="fooId"
+			property="rosterId"
 			valign="top"
 		/>
 
 		<liferay-ui:search-container-column-text
-			name="field1"
+			name="clubId"
 			valign="top"
 		>
-			<strong><%= foo.getField1() %></strong>
-
-			<br />
-
-			<div class="lfr-asset-categories">
-				<liferay-ui:asset-categories-summary
-					className="<%= Foo.class.getName() %>"
-					classPK="<%= foo.getFooId() %>"
-				/>
-			</div>
-
-			<div class="lfr-asset-tags">
-				<liferay-ui:asset-tags-summary
-					className="<%= Foo.class.getName() %>"
-					classPK="<%= foo.getFooId() %>"
-					message="tags"
-				/>
-			</div>
+			<strong><%= roster.getClubId() %></strong>
 		</liferay-ui:search-container-column-text>
 
 		<liferay-ui:search-container-column-text
-			property="field2"
-			valign="top"
-		/>
-
-		<liferay-ui:search-container-column-text
-			property="field3"
-			valign="top"
-		/>
-
-		<liferay-ui:search-container-column-date
-			name="field4"
-			valign="top"
-			value="<%= foo.getField4() %>"
-		/>
-
-		<liferay-ui:search-container-column-text
-			property="field5"
+			property="name"
 			valign="top"
 		/>
 
 		<liferay-ui:search-container-column-jsp
 			cssClass="entry-action"
-			path="/foo_action.jsp"
+			path="/roster_action.jsp"
 			valign="top"
 		/>
 	</liferay-ui:search-container-row>

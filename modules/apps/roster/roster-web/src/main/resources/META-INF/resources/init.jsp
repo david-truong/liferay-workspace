@@ -26,9 +26,8 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 page import="com.liferay.portal.kernel.util.ParamUtil" %><%@
 page import="com.liferay.portal.kernel.util.StringPool" %><%@
 page import="com.liferay.portal.kernel.util.WebKeys" %><%@
-page import="com.liferay.sample.model.Foo" %><%@
-page import="com.liferay.sample.service.FooLocalServiceUtil" %><%@
-page import="com.liferay.sample.web.FooField4Comparator" %><%@
+page import="com.liferay.roster.model.Roster" %><%@
+page import="com.liferay.roster.service.RosterLocalServiceUtil" %><%@
 page import="com.liferay.taglib.search.ResultRow" %>
 
 <%@ page import="javax.portlet.PortletURL" %>

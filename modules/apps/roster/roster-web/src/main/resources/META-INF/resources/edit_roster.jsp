@@ -19,54 +19,44 @@
 <%
 String redirect = ParamUtil.getString(request, "redirect");
 
-long fooId = ParamUtil.getLong(request, "fooId");
+long rosterId = ParamUtil.getLong(request, "rosterId");
 
-Foo foo = null;
+Roster roster = null;
 
-if (fooId > 0) {
-	foo = FooLocalServiceUtil.getFoo(fooId);
+if (rosterId > 0) {
+	roster = RosterLocalServiceUtil.getRoster(rosterId);
 }
 %>
 
 <aui:form action="<%= renderResponse.createActionURL() %>" method="post" name="fm">
-	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= foo == null ? Constants.ADD : Constants.UPDATE %>" />
+	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= roster == null ? Constants.ADD : Constants.UPDATE %>" />
 	<aui:input name="redirect" type="hidden" value="<%= currentURL %>" />
-	<aui:input name="fooId" type="hidden" value="<%= fooId %>" />
+	<aui:input name="rosterId" type="hidden" value="<%= rosterId %>" />
 
 	<liferay-ui:header
 		backURL="<%= redirect %>"
-		title='<%= (foo != null) ? foo.getField1() : "new-foo" %>'
+		title='<%= (roster != null) ? roster.getClubId() : "new-roster" %>'
 	/>
 
 	<liferay-ui:asset-categories-error />
 
 	<liferay-ui:asset-tags-error />
 
-	<aui:model-context bean="<%= foo %>" model="<%= Foo.class %>" />
+	<aui:model-context bean="<%= roster %>" model="<%= Roster.class %>" />
 
 	<aui:fieldset>
-		<aui:input name="field1" />
+		<aui:input name="clubId" />
 
-		<aui:input name="field2" />
+		<aui:input name="name" />
 
-		<aui:input name="field3" />
-
-		<aui:input name="field4" />
-
-		<aui:input name="field5" />
-
-		<liferay-ui:custom-attributes-available className="<%= Foo.class.getName() %>">
+		<liferay-ui:custom-attributes-available className="<%= Roster.class.getName() %>">
 			<liferay-ui:custom-attribute-list
-				className="<%= Foo.class.getName() %>"
-				classPK="<%= (foo != null) ? foo.getFooId() : 0 %>"
+				className="<%= Roster.class.getName() %>"
+				classPK="<%= (roster != null) ? roster.getRosterId() : 0 %>"
 				editable="<%= true %>"
 				label="<%= true %>"
 			/>
 		</liferay-ui:custom-attributes-available>
-
-		<aui:input name="categories" type="assetCategories" />
-
-		<aui:input name="tags" type="assetTags" />
 	</aui:fieldset>
 
 	<aui:button-row>
