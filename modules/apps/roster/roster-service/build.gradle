@@ -13,12 +13,12 @@ apply plugin: "com.liferay.portal.tools.service.builder"
 
 dependencies {
 	compile 'biz.aQute.bnd:biz.aQute.bnd.annotation:3.0.0'
-    compile 'org.osgi:org.osgi.core:6.0.0'
-    compile 'org.osgi:org.osgi.compendium:5.0.0'
-    compile 'com.liferay:com.liferay.osgi.util:2.0.7'
-    compile 'com.liferay.portal:com.liferay.portal.kernel:1.0.2'
-    compile 'com.liferay:com.liferay.portal.spring.extender:1.0.4'
-    compile project(':modules:apps:roster:roster-api')
+	compile 'com.liferay.portal:com.liferay.portal.kernel:1.0.2'
+	compile 'com.liferay:com.liferay.osgi.util:2.0.7'
+	compile 'com.liferay:com.liferay.portal.spring.extender:1.0.4'
+	compile 'org.osgi:org.osgi.compendium:5.0.0'
+	compile 'org.osgi:org.osgi.core:6.0.0'
+	compile project(':modules:apps:roster:roster-api')
 }
 
 buildService {

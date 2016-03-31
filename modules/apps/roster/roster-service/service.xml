@@ -41,6 +41,7 @@
 		</finder>
 	</entity>
 	<entity name="RosterMember" uuid="true" local-service="true" remote-service="true">
+
 		<!-- PK fields -->
 
 		<column name="rosterMemberId" type="long" primary="true" />
@@ -63,6 +64,7 @@
 		</finder>
 
 		<!-- References -->
+
 		<reference package-path="com.liferay.portal" entity="Contact" />
 	</entity>
 
