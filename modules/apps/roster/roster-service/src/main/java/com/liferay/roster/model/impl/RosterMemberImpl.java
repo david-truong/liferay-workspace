@@ -27,11 +27,13 @@ import aQute.bnd.annotation.ProviderType;
  */
 @ProviderType
 public class RosterMemberImpl extends RosterMemberBaseImpl {
-	/*
+
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. All methods that expect a roster member model instance should use the {@link com.liferay.roster.model.RosterMember} interface instead.
 	 */
 	public RosterMemberImpl() {
 	}
+
 }

@@ -16,6 +16,9 @@ package com.liferay.roster.service.impl;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.roster.model.Roster;
 import com.liferay.roster.service.base.RosterLocalServiceBaseImpl;
 
 /**
@@ -34,9 +37,34 @@ import com.liferay.roster.service.base.RosterLocalServiceBaseImpl;
  */
 @ProviderType
 public class RosterLocalServiceImpl extends RosterLocalServiceBaseImpl {
-	/*
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Always use {@link com.liferay.roster.service.RosterLocalServiceUtil} to access the roster local service.
-	 */
+
+	public Roster addRoster(
+		long clubId, String name, ServiceContext serviceContext) {
+
+		Roster roster = rosterLocalService.createRoster(
+			counterLocalService.increment());
+
+		roster.setClubId(clubId);
+		roster.setName(name);
+		roster.setCreateDate(serviceContext.getCreateDate());
+		roster.setModifiedDate(serviceContext.getModifiedDate());
+
+		return rosterLocalService.addRoster(roster);
+	}
+
+	public Roster updateRoster(
+			long rosterId, long clubId, String name,
+			ServiceContext serviceContext)
+		throws PortalException {
+
+		Roster roster = rosterLocalService.getRoster(rosterId);
+
+		roster.setClubId(clubId);
+		roster.setName(name);
+		roster.setCreateDate(serviceContext.getCreateDate());
+		roster.setModifiedDate(serviceContext.getModifiedDate());
+
+		return rosterLocalService.updateRoster(roster);
+	}
+
 }

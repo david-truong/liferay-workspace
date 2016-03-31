@@ -34,7 +34,8 @@ import com.liferay.roster.service.base.ClubLocalServiceBaseImpl;
  */
 @ProviderType
 public class ClubLocalServiceImpl extends ClubLocalServiceBaseImpl {
-	/*
+
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.roster.service.ClubLocalServiceUtil} to access the club local service.

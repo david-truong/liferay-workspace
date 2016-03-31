@@ -27,11 +27,13 @@ import aQute.bnd.annotation.ProviderType;
  */
 @ProviderType
 public class ClubImpl extends ClubBaseImpl {
-	/*
+
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. All methods that expect a club model instance should use the {@link com.liferay.roster.model.Club} interface instead.
 	 */
 	public ClubImpl() {
 	}
+
 }

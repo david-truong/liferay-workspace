@@ -27,6 +27,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -60,6 +61,8 @@ public interface RosterLocalService extends BaseLocalService,
 	 *
 	 * Never modify or reference this interface directly. Always use {@link RosterLocalServiceUtil} to access the roster local service. Add custom service methods to {@link com.liferay.roster.service.impl.RosterLocalServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public Roster addRoster(long clubId, java.lang.String name,
+		ServiceContext serviceContext);
 
 	/**
 	* Adds the roster to the database. Also notifies the appropriate model listeners.
@@ -224,4 +227,8 @@ public interface RosterLocalService extends BaseLocalService,
 	*/
 	@Indexable(type = IndexableType.REINDEX)
 	public Roster updateRoster(Roster roster);
+
+	public Roster updateRoster(long rosterId, long clubId,
+		java.lang.String name, ServiceContext serviceContext)
+		throws PortalException;
 }

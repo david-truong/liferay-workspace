@@ -41,6 +41,11 @@ public class RosterLocalServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to {@link com.liferay.roster.service.impl.RosterLocalServiceImpl} and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static com.liferay.roster.model.Roster addRoster(long clubId,
+		java.lang.String name,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
+		return getService().addRoster(clubId, name, serviceContext);
+	}
 
 	/**
 	* Adds the roster to the database. Also notifies the appropriate model listeners.
@@ -246,6 +251,13 @@ public class RosterLocalServiceUtil {
 	public static com.liferay.roster.model.Roster updateRoster(
 		com.liferay.roster.model.Roster roster) {
 		return getService().updateRoster(roster);
+	}
+
+	public static com.liferay.roster.model.Roster updateRoster(long rosterId,
+		long clubId, java.lang.String name,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().updateRoster(rosterId, clubId, name, serviceContext);
 	}
 
 	public static RosterLocalService getService() {

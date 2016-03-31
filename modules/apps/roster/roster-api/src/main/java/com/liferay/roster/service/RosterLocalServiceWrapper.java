@@ -32,6 +32,13 @@ public class RosterLocalServiceWrapper implements RosterLocalService,
 		_rosterLocalService = rosterLocalService;
 	}
 
+	@Override
+	public com.liferay.roster.model.Roster addRoster(long clubId,
+		java.lang.String name,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
+		return _rosterLocalService.addRoster(clubId, name, serviceContext);
+	}
+
 	/**
 	* Adds the roster to the database. Also notifies the appropriate model listeners.
 	*
@@ -256,6 +263,15 @@ public class RosterLocalServiceWrapper implements RosterLocalService,
 	public com.liferay.roster.model.Roster updateRoster(
 		com.liferay.roster.model.Roster roster) {
 		return _rosterLocalService.updateRoster(roster);
+	}
+
+	@Override
+	public com.liferay.roster.model.Roster updateRoster(long rosterId,
+		long clubId, java.lang.String name,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _rosterLocalService.updateRoster(rosterId, clubId, name,
+			serviceContext);
 	}
 
 	@Override

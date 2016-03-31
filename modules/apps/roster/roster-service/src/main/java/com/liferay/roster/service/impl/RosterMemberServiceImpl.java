@@ -34,7 +34,8 @@ import com.liferay.roster.service.base.RosterMemberServiceBaseImpl;
  */
 @ProviderType
 public class RosterMemberServiceImpl extends RosterMemberServiceBaseImpl {
-	/*
+
+	/**
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never reference this class directly. Always use {@link com.liferay.roster.service.RosterMemberServiceUtil} to access the roster member remote service.
