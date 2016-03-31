@@ -1,6 +1,6 @@
 Bundle-Version: 1.0.0
 Export-Package:\
-	com.liferay.sample.exception,\
-	com.liferay.sample.model,\
-	com.liferay.sample.service,\
-	com.liferay.sample.service.persistence
+	com.liferay.roster.exception,\
+	com.liferay.roster.model,\
+	com.liferay.roster.service,\
+	com.liferay.roster.service.persistence

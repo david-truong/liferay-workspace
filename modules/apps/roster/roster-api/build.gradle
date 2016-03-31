@@ -1,9 +1,6 @@
 dependencies {
-	compile 'biz.aQute.bnd:biz.aQute.bnd.annotation:3.0.0'
-	compile 'com.liferay.portal:com.liferay.portal.kernel:1.0.2'
-	compile 'com.liferay:com.liferay.osgi.util:2.0.7'
-	compile 'org.osgi:org.osgi.compendium:5.0.0'
-	compile 'org.osgi:org.osgi.core:6.0.0'
+	compile 'biz.aQute.bnd:biz.aQute.bndlib:3.1.0'
+	compile 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
+	compile 'com.liferay:com.liferay.osgi.util:3.0.0'
+	compile 'org.osgi:org.osgi.core:5.0.0'
 }
-
-version = '1.0.0'
