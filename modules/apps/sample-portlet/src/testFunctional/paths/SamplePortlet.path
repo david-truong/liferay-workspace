@@ -9,13 +9,13 @@
 </thead>
 <tbody>
 <tr>
-	<td>PANEL_TITLE</td>
-	<td>//div/div/section/div/h2</td>
+	<td>PORTLET_TITLE</td>
+	<td>//section[contains(@id,'SamplePortlet')]/div/h2</td>
 	<td></td>
 </tr>
 <tr>
-	<td>PANEL_CONTENT</td>
-	<td>//div/div/section/div/div/div/p</td>
+	<td>PORTLET_CONTENT</td>
+	<td>//section[contains(@id,'SamplePortlet')]/div/div/div/p</td>
 	<td></td>
 </tr>
 </tbody>

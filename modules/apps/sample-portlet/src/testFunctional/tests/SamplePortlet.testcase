@@ -1,24 +1,19 @@
 <definition component-name="smoke">
 	<command name="smoke">
-		<execute function="Open" locator1="http://localhost:8080/" />
-		<execute function="AssertClick" locator1="//span[contains(@class,'sign-in')]/a" value1="Sign In" />
+		<execute macro="SignIn#signin">
+			<var name="emailAddress" value="test@liferay.com" />
+			<var name="password" value="test" />
+		</execute>
 
-		<execute function="AssertVisible" locator1="//div[contains(@class,'modal-dialog')]//div[contains(@class,'modal-body')]" />
-
-		<execute function="Type" locator1="//div[label[contains(.,'Email Address')]]/input[@type='text']" value1="test@liferay.com" />
-		<execute function="Type" locator1="//div[label[contains(.,'Password')]]/input" value1="test" />
-
-		<execute function="AssertClick" locator1="//button[contains(.,'Sign In')]" value1="Sign In" />
 		<execute function="Pause" locator1="5000" />
 
-		<execute function="Open" locator1="http://localhost:8080/" />
+		<execute macro="Portlet#Add">
+			<var name="portletName" value="Sample JSP Portlet" />
+		</execute>
 
-		<execute function="Click" locator1="//*[@data-qa-id='controlMenu']//*[@data-qa-id='add']" />
-		<execute function="Pause" locator1="5000" />
-		<execute function="Type#sendKeys" locator1="//input[contains(@id,'searchApplication')]" value1="Sample JSP Portlet" />
-		<execute function="AssertClick" locator1="//span[contains(@data-search,'-Sample JSP Portlet') and contains(@class,'add-content-item')]" value1="Add" />
-		<execute function="Pause" locator1="5000" />
-		<execute function="AssertText" locator1="SamplePortlet#PANEL_TITLE" value1="Sample JSP Portlet" />
-		<execute function="AssertText" locator1="SamplePortlet#PANEL_CONTENT" value1="Hello from Sample JSP!" />
+		<execute macro="Portlet#View">
+			<var name="portletTitle" value="Sample JSP Portlet" />
+			<var name="portletContent" value="Hello from Sample JSP!" />
+		</execute>
 	</command>
 </definition>
