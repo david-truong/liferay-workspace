@@ -19,8 +19,8 @@ dependencies {
 	compile 'javax.portlet:portlet-api:2.0'
 	compile 'org.osgi:org.osgi.compendium:5.0.0'
 
-	testCompile 'com.liferay.portal:com.liferay.portal.test:1.0.0-SNAPSHOT'
-	testCompile 'com.liferay.portal:com.liferay.portal.test.internal:1.0.0-SNAPSHOT'
+	testCompile 'com.liferay.portal:com.liferay.portal.test:1.0.0'
+	testCompile 'com.liferay.portal:com.liferay.portal.test.integration:1.0.0'
 
 	testCompile 'junit:junit:4.4'
 

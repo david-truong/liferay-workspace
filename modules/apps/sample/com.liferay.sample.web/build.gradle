@@ -5,9 +5,9 @@ dependencies {
     compile 'javax.portlet:portlet-api:2.0'
     compile 'javax.servlet:servlet-api:2.5'
     compile 'com.liferay.portal:com.liferay.portal.kernel:1.0.2'
-    compile 'com.liferay.portal:util-bridges:7.0.0-SNAPSHOT'
-    compile 'com.liferay.portal:util-taglib:7.0.0-SNAPSHOT'
-    compile 'com.liferay.portal:util-java:7.0.0-SNAPSHOT'
+    compile 'com.liferay.portal:com.liferay.util.bridges:1.0.0'
+    compile 'com.liferay.portal:com.liferay.util.java:1.0.0'
+    compile 'com.liferay.portal:com.liferay.util.taglib:1.0.0'
     compile 'org.slf4j:slf4j-api:1.7.7'
     compile 'org.slf4j:slf4j-simple:1.7.7'
     compile project(':modules:apps:sample:com.liferay.sample.api')
