@@ -33,3 +33,12 @@ sourceSets {
 		runtimeClasspath = configurations.portal + runtimeClasspath + configurations.portalTest
 	}
 }
+
+poshiRunner {
+	if (project.hasProperty("poshiRunnerExtProperties")) {
+		poshiPropertiesFile = new File(projectDir.parentFile, project.properties["poshiRunnerExtProperties"])
+	}
+
+	version = "1.0.38"
+}
+
