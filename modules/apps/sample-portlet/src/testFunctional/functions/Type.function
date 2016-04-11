@@ -13,4 +13,9 @@
 
 		<execute selenium="sendKeys" />
 	</command>
+	<command name="sendKeysApplicationSearch">
+		<execute argument1="//script[contains(@src,'/autocomplete-filters/autocomplete-filters')]" selenium="waitForElementPresent" />
+
+		<execute function="Type#sendKeys" />
+	</command>
 </definition>

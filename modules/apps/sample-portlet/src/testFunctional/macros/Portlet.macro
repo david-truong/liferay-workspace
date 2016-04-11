@@ -4,7 +4,15 @@
 
 		<execute function="Click" locator1="ControlMenu#ADD" />
 		<execute function="Pause" locator1="5000" />
-		<execute function="Type#sendKeys" locator1="ControlMenu#SEARCH_APPLICATION" value1="${portletName}" />
+
+		<if>
+			<condition function="IsVisible" locator1="ControlMenu#APPLICATION_PANEL_COLLAPSED_FALSE" />
+			<then>
+				<execute function="Click" locator1="ControlMenu#APPLICATION_PANEL_COLLAPSED_FALSE" />
+			</then>
+		</if>
+		
+		<execute function="Type#sendKeysApplicationSearch" locator1="ControlMenu#SEARCH_APPLICATION" value1="${portletName}" />
 		<execute function="AssertClick" locator1="ControlMenu#APPLICATION_ADD" value1="Add" />
 		<execute function="Pause" locator1="5000" />
 	</command>
