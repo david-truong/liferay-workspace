@@ -1,0 +1,7 @@
+<definition default="isVisible">
+	<command name="isVisible">
+		<execute selenium="waitForElementPresent" />
+
+		<execute selenium="isVisible" />
+	</command>
+</definition>

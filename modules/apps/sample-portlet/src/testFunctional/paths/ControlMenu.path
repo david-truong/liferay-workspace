@@ -14,13 +14,18 @@
 	<td></td>
 </tr>
 <tr>
-	<td>SEARCH_APPLICATION</td>
-	<td>//input[contains(@id,'searchApplication')]</td>
+	<td>APPLICATION_ADD</td>
+	<td>//span[contains(@data-search,'-${portletName}') and contains(@class,'add-content-item')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>APPLICATION_ADD</td>
-	<td>//span[contains(@data-search,'-${portletName}') and contains(@class,'add-content-item')]</td>
+	<td>APPLICATION_PANEL_COLLAPSED_FALSE</td>
+	<td>//*[@data-qa-id='addPanelBody']//div[@aria-expanded='false' and contains(.,'Applications')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SEARCH_APPLICATION</td>
+	<td>//input[contains(@id,'searchApplication')]</td>
 	<td></td>
 </tr>
 </tbody>
