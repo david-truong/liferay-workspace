@@ -1,15 +1,3 @@
-repositories {
-	mavenCentral()
-
-	maven {
-		url "http://cdn.repository.liferay.com/nexus/content/groups/public"
-	}
-
-	maven {
-		url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
-	}
-}
-
 configurations {
 	portalTest
 }
