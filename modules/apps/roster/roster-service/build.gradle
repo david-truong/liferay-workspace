@@ -1,16 +1,3 @@
-buildscript {
-	repositories {
-		maven {
-			url "https://repository.liferay.com/nexus/content/groups/liferay-ce/"
-		}
-	}
-	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.service.builder", version: "latest.release"
-	}
-}
-
-apply plugin: "com.liferay.portal.tools.service.builder"
-
 dependencies {
 	compile 'biz.aQute.bnd:biz.aQute.bndlib:3.1.0'
 	compile 'com.liferay:com.liferay.portal.spring.extender:2.0.1'
@@ -29,5 +16,3 @@ buildService {
 	osgiModule = true
 	propsUtil = "com.liferay.roster.service.util.PropsUtil"
 }
-
-version = '1.0.0'
