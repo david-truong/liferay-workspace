@@ -37,6 +37,10 @@ task deploy (type: Copy)
 
 File themeDestinationDir = new File(buildDir, "compiled-theme")
 
+build {
+	dependsOn deploy
+}
+
 buildCSS {
 	dependsOn buildTheme
 	dependsOn buildThumbnails
