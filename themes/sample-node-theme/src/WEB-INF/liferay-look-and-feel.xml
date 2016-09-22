@@ -5,7 +5,7 @@
 	<compatibility>
 		<version>7.0.0+</version>
 	</compatibility>
-	<theme id="sample" name="sample">
+	<theme id="sample-node" name="sample-node">
 		<template-extension>ftl</template-extension>
 	</theme>
 </look-and-feel>
