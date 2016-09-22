@@ -5,14 +5,16 @@ jdk:
 matrix:
   fast_finish: true
 
-install: travis_wait ./gradlew clean
-# TO debug
-# script: ./gradlew build --debug
-script: ./gradlew build
 before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
     - $HOME/.liferay/
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+
+install: travis_wait ./gradlew clean
+# TO debug
+# script: ./gradlew build --debug
+script: ./gradlew build
