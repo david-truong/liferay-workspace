@@ -2,9 +2,6 @@ language: java
 jdk:
   - oraclejdk8
 
-matrix:
-  fast_finish: true
-
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -14,7 +11,7 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-install: travis_wait ./gradlew clean
+install: travis_wait ./gradlew initBundle
 # TO debug
 # script: ./gradlew build --debug
-script: ./gradlew build
+script: ./gradlew clean build

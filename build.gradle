@@ -21,8 +21,3 @@ configure([initBundle, distBundleTar, distBundleZip]) {
 		from configurations.providedModules
 	}
 }
-
-//This will delete your liferay home directory when you call clean
-clean {
-	finalizedBy initBundle
-}
