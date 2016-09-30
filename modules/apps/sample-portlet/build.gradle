@@ -15,8 +15,8 @@ configurations {
 }
 
 dependencies {
-	compile 'com.liferay.portal:com.liferay.portal.kernel:2.0.0'
-	compile 'javax.portlet:portlet-api:2.0'
+	compile 'com.liferay.portal:com.liferay.portal.kernel:default'
+	compile 'javax.portlet:portlet-api:default'
 	compile 'org.osgi:org.osgi.compendium:5.0.0'
 
 	testCompile 'com.liferay.portal:com.liferay.portal.test:1.0.0'
@@ -41,4 +41,3 @@ poshiRunner {
 
 	version = "1.0.38"
 }
-
