@@ -22,7 +22,3 @@ plugins-sdk/dependencies/**/*.jar
 plugins-sdk/dist
 plugins-sdk/lib
 test-results
-themes-gradle/**/webapp/css
-themes-gradle/**/webapp/images
-themes-gradle/**/webapp/js
-themes-gradle/**/webapp/templates
