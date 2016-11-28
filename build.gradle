@@ -1,3 +1,15 @@
+buildscript {
+	dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.baseline", version: "1.0.0"
+	}
+
+	repositories {
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+}
+
 allprojects {
 	apply plugin: 'idea'
 	apply plugin: 'eclipse'
@@ -19,5 +31,13 @@ repositories {
 configure([initBundle, distBundleTar, distBundleZip]) {
 	into("osgi/modules") {
 		from configurations.providedModules
+	}
+}
+
+subprojects {
+	def bndFile = file("bnd.bnd")
+
+	if (bndFile.exists()) {
+		apply plugin: "com.liferay.baseline"
 	}
 }
