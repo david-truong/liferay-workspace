@@ -4,3 +4,7 @@ dependencies {
 	compile 'com.liferay:com.liferay.osgi.util:3.0.0'
 	compile 'org.osgi:org.osgi.core:5.0.0'
 }
+
+baselineConfiguration {
+	allowMavenLocal true
+}
