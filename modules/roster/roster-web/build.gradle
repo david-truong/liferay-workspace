@@ -10,7 +10,7 @@ dependencies {
 	compile 'org.osgi:org.osgi.core:6.0.0'
 	compile 'org.slf4j:slf4j-api:1.7.7'
 	compile 'org.slf4j:slf4j-simple:1.7.7'
-	compile project(':modules:apps:roster:roster-api')
+	compile project(':modules:roster:roster-api')
 }
 
 version = '1.0.0'
