@@ -11,5 +11,3 @@ buildscript {
 }
 
 apply plugin: "com.liferay.workspace"
-
-include 'themes:sample-gradle-theme'
