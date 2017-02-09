@@ -30,8 +30,8 @@
 						</goals>
 						<configuration>
 							<!-- https://nodejs.org/en/download/releases/ -->
-							<nodeVersion>v5.5.0</nodeVersion>
-							<npmVersion>3.3.12</npmVersion>
+							<nodeVersion>v6.6.0</nodeVersion>
+							<npmVersion>3.10.3</npmVersion>
 						</configuration>
 					</execution>
 					<execution>
