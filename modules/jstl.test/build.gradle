@@ -1,9 +1,0 @@
-dependencies {
-	compile 'com.liferay.portal:com.liferay.portal.kernel:default'
-	compile 'com.liferay.portal:com.liferay.util.taglib:default'
-	compile 'javax.portlet:portlet-api:default'
-	compile 'javax.servlet:servlet-api:default'
-	compile 'org.osgi:org.osgi.compendium:5.0.0'
-}
-
-version = '1.0.0'
