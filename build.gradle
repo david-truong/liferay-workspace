@@ -28,12 +28,6 @@ repositories {
 	jcenter()
 }
 
-configure([initBundle, distBundleTar, distBundleZip]) {
-	into("osgi/modules") {
-		from configurations.providedModules
-	}
-}
-
 subprojects {
 	def bndFile = file("bnd.bnd")
 
