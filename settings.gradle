@@ -9,12 +9,8 @@ buildscript {
 		mavenCentral()
 		
 		maven {
-			url "http://cdn.repository.liferay.com/nexus/content/groups/public"
+			url "http://repository-cdn.liferay.com/nexus/content/groups/public"
 		}
-
-		maven {
-	        url "https://plugins.gradle.org/m2/"
-	    }
 	}
 }
 
