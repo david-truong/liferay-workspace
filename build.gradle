@@ -27,11 +27,3 @@ dependencies {
 repositories {
 	jcenter()
 }
-
-subprojects {
-	def bndFile = file("bnd.bnd")
-
-	if (bndFile.exists()) {
-		apply plugin: "com.liferay.baseline"
-	}
-}
