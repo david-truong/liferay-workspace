@@ -1,0 +1,10 @@
+Bundle-Name: Custom Data API
+Bundle-SymbolicName: com.liferay.custom.data.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.custom.data.exception,\
+	com.liferay.custom.data.model,\
+	com.liferay.custom.data.service,\
+	com.liferay.custom.data.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../custom-data-service/service.xml
