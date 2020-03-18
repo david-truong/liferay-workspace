@@ -1,4 +1,0 @@
-Bundle-Name: hello-world
-Bundle-SymbolicName: hello.world
-Bundle-Version: 1.0.0
-Export-Package: hello.world.constants
