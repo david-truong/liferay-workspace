@@ -14,11 +14,11 @@
 	},
 	"devDependencies": {
 		"compass-mixins": "0.12.10",
-		"gulp": "3.9.1",
+		"gulp": "4.0.2",
 		"liferay-frontend-common-css": "1.0.4",
 		"liferay-frontend-theme-styled": "5.0.0",
 		"liferay-frontend-theme-unstyled": "5.0.0",
-		"liferay-theme-tasks": "^9.5.0"
+		"liferay-theme-tasks": "^11.4.0"
 	},
 	"scripts": {
 		"init": "gulp init",
